@@ -1,0 +1,14 @@
+a{
+  display: block;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  color: black;
+}
+
+
+.icon {
+  width: 64px;
+  height: 64px;
+}

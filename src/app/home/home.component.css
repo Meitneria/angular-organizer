@@ -1,10 +1,3 @@
-label{
-  display: block;
-  text-align: center;
-  font-size: 16px;
-  font-weight: 600;
-}
-
 .row{
   display: flex;
   flex-direction: row;
@@ -21,48 +14,21 @@ label{
   margin: 20px 20px;
   display: flex;
   justify-content: center;
-
+  align-items: center;
 }
 
 .part:before{
   content: "";
   display: block;
-  padding-top: 80%; 	/* initial ratio of 1:1*/
+  padding-top: 80%;
 }
 
 .center{
   width: 100px;
   height: 100px;
-  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.icon {
-  width: 64px;
-  margin: auto;
-  height: 64px;
-}
 
-.calendar{
-  background-image: url("../../images/icons/calendar.png");
-  background-repeat: no-repeat;
-}
-.tasks{
-  background-image: url("../../images/icons/todo.png");
-  background-repeat: no-repeat;
-}
-.finance{
-  background-image: url("../../images/icons/wallet.png");
-  background-repeat: no-repeat;
-}
-.list{
-  background-image: url("../../images/icons/list.png");
-  background-repeat: no-repeat;
-}
-.work{
-  background-image: url("../../images/icons/clock.png");
-  background-repeat: no-repeat;
-}
-.notes{
-  background-image: url("../../images/icons/tasks.png");
-  background-repeat: no-repeat;
-}

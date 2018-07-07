@@ -1,39 +1,13 @@
 <section class="row">
-  <div class="part">
-    <div class="center" [@myAnim]='state' (mouseover)="animateMe()">
-    <div class="icon calendar"></div>
-    <label>Calendar</label>
-    </div>
+  <div class="part" *ngFor="let item of items; let index = index">
+      <app-home-item class="center"
+        [item]="item"
+        [id]="index"
+        [activeId]="activeIndex"
+        (mouseenter)="onMouseEnter(index)"
+        (mouseleave)="onMouseLeave()"
+      >
+      </app-home-item>
   </div>
-  <div class="part">
-    <div class="center">
-      <div class="icon tasks"></div>
-      <label>Tasks</label>
-    </div>
-  </div>
-  <div class="part">
-    <div class="center">
-      <div class="icon finance"></div>
-      <label>Finance</label>
-    </div>
-  </div>
-  <div class="part">
-    <div class="center">
-      <div class="icon list"></div>
-      <label>Shopping List</label>
-    </div>
-  </div>
-  <div class="part">
-    <div class="center">
-      <div class="icon work"></div>
-      <label>Work Tracker</label>
-    </div>
-  </div>
-  <div class="part">
-    <div class="center">
-      <div class="icon notes"></div>
-      <label>Notes</label>
-    </div>
-  </div>
-
 </section>
+
