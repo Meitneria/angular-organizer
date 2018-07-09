@@ -9,19 +9,27 @@ import { FinanceComponent } from './finance/finance.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { WorkTrackerComponent } from './work-tracker/work-tracker.component';
 import { NotesComponent } from './notes/notes.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeItemComponent } from './home-item/home-item.component';
 import { RouterModule, Routes } from '@angular/router';
+import { ProgressBarComponent } from './progress-bar/progress-bar.component';
+import { DateComponent } from './date/date.component';
+
+import { NgProgressModule } from '@ngx-progressbar/core';
+import { NgProgressRouterModule } from '@ngx-progressbar/router';
+import { RouterResolver } from './router.resolver';
 
 const appRoutes: Routes = [
-  { path: 'calendar', component: CalendarComponent },
-  { path: 'finance', component: FinanceComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'notes', component: NotesComponent },
-  { path: 'shopping-list', component: ShoppingListComponent },
-  { path: 'tasks', component: TasksComponent },
-  { path: 'work-tracker', component: WorkTrackerComponent }
-];
+  { path: 'calendar', component: CalendarComponent, resolve: { crisis: RouterResolver } },
+  { path: 'finance', component: FinanceComponent, resolve: { crisis: RouterResolver } },
+  { path: '', component: HomeComponent, resolve: { crisis: RouterResolver } },
+  { path: 'notes', component: NotesComponent, resolve: { crisis: RouterResolver } },
+  { path: 'shopping-list', component: ShoppingListComponent, resolve: { crisis: RouterResolver } },
+  { path: 'tasks', component: TasksComponent, resolve: { crisis: RouterResolver } },
+  { path: 'work-tracker', component: WorkTrackerComponent, resolve: { crisis: RouterResolver }}
+  ];
+
+
 
 @NgModule({
   declarations: [
@@ -34,14 +42,18 @@ const appRoutes: Routes = [
     ShoppingListComponent,
     WorkTrackerComponent,
     NotesComponent,
-    HomeItemComponent
+    HomeItemComponent,
+    ProgressBarComponent,
+    DateComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(appRoutes)
+    NgProgressModule.forRoot(),
+    RouterModule.forRoot(appRoutes),
+    NgProgressRouterModule
   ],
-  providers: [],
+  providers: [RouterResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,0 +1,23 @@
+.date{
+  display: flex;
+  justify-content: center;
+}
+
+.day, .month{
+  margin: 20px;
+  font-size: 10pt;
+  font-weight: bold;
+}
+
+.month{
+  color: #939393;
+  font-weight: normal;
+}
+
+.circle{
+  margin-top: 27px;
+  width: 5px;
+  height: 5px;
+  background-color: black;
+  border-radius: 30px;
+}
