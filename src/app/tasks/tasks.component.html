@@ -1,3 +1,50 @@
-<p>
-  tasks works!
-</p>
+<section>
+  <div class="row">
+
+    <div class="task-input">
+      <p>Create a new task</p>
+
+      <div class="create">
+        <div class="input-task">
+          <div class="position">
+            <input class="effect-2"
+                   placeholder="Insert title"
+                   [(ngModel)] = "itemTitle"
+                   >
+            <span class="focus-border"></span>
+          </div>
+          <div class="position">
+            <input class="effect-2 small"
+                   placeholder="ddd"
+                   autofocus type="text"
+                   [(ngModel)] = "itemInfo"
+                   >
+            <span class="focus-border"></span>
+          </div>
+        </div>
+        <button class="confirm"
+                (click)="onAdd(itemTitle, itemInfo)"
+                [disabled]="!itemTitle"
+                ></button>
+      </div>
+
+    </div>
+
+    <div class="task-container" *ngFor="let task of taskArray ">
+      <div class="task"><i class="icon"></i>
+        <div class="label-text">
+          <div class="item">
+            {{task.title}}
+          </div>
+          <div class="item small">
+            {{task.info}}
+          </div>
+        </div>
+        <div class="label-date">
+        <div class="date"> {{task.date | date:'H:mm'}} </div>
+        <div class="date small"> {{task.date | date:'EEEE'}} </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { ButtonComponent } from './button/button.component';
@@ -19,6 +20,11 @@ import { NgProgressModule } from '@ngx-progressbar/core';
 import { NgProgressRouterModule } from '@ngx-progressbar/router';
 import { RouterResolver } from './router.resolver';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule} from 'angularfire2/database';
+import { environment } from '../environments/environment';
+
+
 const appRoutes: Routes = [
   { path: 'calendar', component: CalendarComponent, resolve: { crisis: RouterResolver } },
   { path: 'finance', component: FinanceComponent, resolve: { crisis: RouterResolver } },
@@ -28,8 +34,6 @@ const appRoutes: Routes = [
   { path: 'tasks', component: TasksComponent, resolve: { crisis: RouterResolver } },
   { path: 'work-tracker', component: WorkTrackerComponent, resolve: { crisis: RouterResolver }}
   ];
-
-
 
 @NgModule({
   declarations: [
@@ -51,7 +55,10 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     NgProgressModule.forRoot(),
     RouterModule.forRoot(appRoutes),
-    NgProgressRouterModule
+    NgProgressRouterModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    FormsModule
   ],
   providers: [RouterResolver],
   bootstrap: [AppComponent]

@@ -6,9 +6,6 @@ a{
   text-decoration: none;
   color: black;
 }
-
-
 .icon {
-  width: 64px;
-  height: 64px;
+  margin: 15px;
 }

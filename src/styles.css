@@ -2,3 +2,4 @@ body{
   background-color: #fcfafa;
   font-family: 'Metrophobic', sans-serif;
 }
+:focus{outline: none;}
