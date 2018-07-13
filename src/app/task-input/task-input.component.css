@@ -1,0 +1,56 @@
+p {
+  margin-top: 40px;
+  text-align: center;
+  font-weight: bolder;
+  font-size: 11pt;
+}
+input{
+  background-color: #fcfafa;
+  height: 30px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  width: 50%;
+}
+.create{
+  display: flex;
+  flex-direction: row;
+  margin: 30px 0px;
+  justify-content: center;
+  align-items: center;
+}
+.input-task{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+.position{
+  position: relative;
+  border-bottom: 1px solid #f4f5f5;
+}
+.effect-2{
+  border: none;
+}
+.effect-2 ~ .focus-border{
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: #DF677C;
+  transition: 0.4s;
+}
+.effect-2:focus ~ .focus-border{
+  width: 100%;
+  transition: 0.4s;
+  left: 0;
+}
+.confirm{
+  background-color: #fcfafa;
+  background-image: url("../../assets/images/icons/plus.png");
+  background-repeat: no-repeat;
+  border: none;
+  width: 32px;
+  height: 32px;
+  align-self: center;
+  margin: 0px 50px;
+}

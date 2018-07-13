@@ -1,7 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TasksService} from './tasks.service';
-import { Task } from './task';
-
 
 @Component({
   selector: 'app-tasks',
@@ -13,7 +11,6 @@ import { Task } from './task';
 
 export class TasksComponent implements OnInit {
   taskArray: any;
-  activateEdit = false;
   public itemTitle: string;
   public itemInfo: string;
 
@@ -29,17 +26,16 @@ export class TasksComponent implements OnInit {
         const data = element.payload.toJSON();
         data['$key'] = element.key;
         this.taskArray.push(data);
+        console.log(this.taskArray);
       });
       this.taskArray.sort((a, b) => {
         return a.isChecked - b.isChecked;
       });
     });
   }
-
-  private onAdd(itemTitle: string, itemInfo: string): void {
-    debugger;
+  onAdd(newTask: any) {
     const date = Date.now();
-    this.taskService.addTitle(itemTitle, itemInfo, date);
+    this.taskService.addTitle(newTask.itemTitle, newTask.itemInfo, date);
     this.itemTitle = '';
     this.itemInfo = '';
   }
