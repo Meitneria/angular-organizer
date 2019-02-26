@@ -3,3 +3,7 @@ body{
   font-family: 'Metrophobic', sans-serif;
 }
 :focus{outline: none;}
+
+.hover-cursor{
+  cursor: pointer;
+}

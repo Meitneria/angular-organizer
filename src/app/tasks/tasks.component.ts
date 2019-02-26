@@ -26,7 +26,6 @@ export class TasksComponent implements OnInit {
         const data = element.payload.toJSON();
         data['$key'] = element.key;
         this.taskArray.push(data);
-        console.log(this.taskArray);
       });
       this.taskArray.sort((a, b) => {
         return a.isChecked - b.isChecked;
@@ -38,5 +37,11 @@ export class TasksComponent implements OnInit {
     this.taskService.addTitle(newTask.itemTitle, newTask.itemInfo, date);
     this.itemTitle = '';
     this.itemInfo = '';
+  }
+  onCheck(keys: any) {
+    this.taskService.CheckTitle(keys.key, keys.checked);
+  }
+  onRemove($key: string) {
+    this.taskService.RemoveTitle($key);
   }
 }

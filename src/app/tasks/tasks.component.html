@@ -1,4 +1,5 @@
-<app-progress-bar></app-progress-bar>
+<app-progress-bar
+[array] = "taskArray"></app-progress-bar>
 <section>
   <div class="row">
     <app-task-input class="task-input"
@@ -7,6 +8,8 @@
     <app-task-item class="task-container"
       *ngFor="let task of taskArray "
     [task] = "task"
+    (check) = "onCheck($event)"
+    (remove) = "onRemove($event)"
     ></app-task-item>
   </div>
 </section>

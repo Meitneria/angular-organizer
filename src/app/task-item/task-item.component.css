@@ -4,7 +4,7 @@
   justify-content: space-between;
   align-items: center;
   width: 60%;
-  min-width: 300px;
+  min-width: 500px;
   background-color: white;
   border-radius: 8px;
   margin: 5px;
@@ -20,7 +20,7 @@
   background-image: url("../../assets/images/icons/verified.png");
 }
 .label-text{
-  min-width: 80%;
+  min-width: 300px;
 }
 .label-date{
   display: flex;
@@ -30,4 +30,11 @@
 }
 .small{
   font-size: 11px;
+}
+
+.recycle{
+  background-image: url("../../assets/images/icons/recycling-bin.png");
+  min-width: 16px;
+  min-height: 16px;
+  margin: 15px 20px;
 }

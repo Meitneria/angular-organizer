@@ -23,6 +23,8 @@ import { RouterResolver } from './router.resolver';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule} from 'angularfire2/database';
 import { environment } from '../environments/environment';
+import { TaskItemComponent } from './task-item/task-item.component';
+import { TaskInputComponent } from './task-input/task-input.component';
 
 
 const appRoutes: Routes = [
@@ -48,7 +50,9 @@ const appRoutes: Routes = [
     NotesComponent,
     HomeItemComponent,
     ProgressBarComponent,
-    DateComponent
+    DateComponent,
+    TaskItemComponent,
+    TaskInputComponent
   ],
   imports: [
     BrowserModule,

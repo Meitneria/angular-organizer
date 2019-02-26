@@ -1,10 +1,6 @@
 import { Component } from '@angular/core';
+import { Item } from '../models/item';
 
-export interface Item {
-name: string;
-icon: string;
-link: string;
-}
 
 @Component({
   selector: 'app-home',

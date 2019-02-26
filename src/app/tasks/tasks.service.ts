@@ -19,4 +19,11 @@ export class TasksService {
       isChecked: false
     });
     }
+
+  CheckTitle($key: string, flag: boolean) {
+    this.toDoList.update($key, { isChecked: !flag});
+  }
+  RemoveTitle($key: string) {
+    this.toDoList.remove($key);
+  }
 }
