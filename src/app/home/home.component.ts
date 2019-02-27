@@ -42,9 +42,11 @@ export class HomeComponent {
     }
   ];
   activeIndex: number;
+
   onMouseEnter(index: number) {
     this.activeIndex = index;
   }
+  
   onMouseLeave() {
     this.activeIndex = undefined;
   }

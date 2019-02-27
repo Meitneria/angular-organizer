@@ -10,6 +10,7 @@
   border:none;
   border-radius: 10px;
   width: 40%;
+  max-width: 400px; 
   margin: 10px 10px;
   display: flex;
   justify-content: center;

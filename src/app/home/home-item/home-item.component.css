@@ -1,0 +1,27 @@
+a {
+  display: block;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  color: black;
+}
+.icon {
+  margin: 15px;
+}
+
+@media screen and (max-width: 500px) {
+  .icon {
+    width: 65%;
+    margin: 10px 15px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .icon {
+    margin: 5px 15px;
+  }
+  a {
+    font-size: 14px;
+  }
+}

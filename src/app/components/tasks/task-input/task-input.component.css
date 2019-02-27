@@ -46,7 +46,7 @@ input{
 }
 .confirm{
   background-color: #fcfafa;
-  background-image: url("../../assets/images/icons/plus.png");
+  background-image: url("../../../../assets/images/icons/plus.png");
   background-repeat: no-repeat;
   border: none;
   width: 32px;

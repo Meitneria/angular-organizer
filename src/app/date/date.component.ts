@@ -1,3 +1,4 @@
+import { AuthService } from '../services/auth.service.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,7 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./date.component.css']
 })
 export class DateComponent {
-
-  constructor() { }
+  constructor(private authService: AuthService) {}
   today: number = Date.now();
 }

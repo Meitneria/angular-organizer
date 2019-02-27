@@ -1,41 +1,44 @@
+import { LoginComponent } from './login/login.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { ButtonComponent } from './button/button.component';
 import { HomeComponent } from './home/home.component';
-import { CalendarComponent } from './calendar/calendar.component';
-import { TasksComponent } from './tasks/tasks.component';
-import { FinanceComponent } from './finance/finance.component';
-import { ShoppingListComponent } from './shopping-list/shopping-list.component';
-import { WorkTrackerComponent } from './work-tracker/work-tracker.component';
-import { NotesComponent } from './notes/notes.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
+import { TasksComponent } from './components/tasks/tasks.component';
+import { FinanceComponent } from './components/finance/finance.component';
+import { ShoppingListComponent } from './components/shopping-list/shopping-list.component';
+import { WorkTrackerComponent } from './components/work-tracker/work-tracker.component';
+import { NotesComponent } from './components/notes/notes.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HomeItemComponent } from './home-item/home-item.component';
+import { HomeItemComponent } from './home/home-item/home-item.component';
 import { RouterModule, Routes } from '@angular/router';
-import { ProgressBarComponent } from './progress-bar/progress-bar.component';
+import { ProgressBarComponent } from './components/tasks/progress-bar/progress-bar.component';
 import { DateComponent } from './date/date.component';
 
 import { NgProgressModule } from '@ngx-progressbar/core';
 import { NgProgressRouterModule } from '@ngx-progressbar/router';
-import { RouterResolver } from './router.resolver';
 
 import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule} from 'angularfire2/database';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../environments/environment';
-import { TaskItemComponent } from './task-item/task-item.component';
-import { TaskInputComponent } from './task-input/task-input.component';
-
+import { TaskItemComponent } from './components/tasks/task-item/task-item.component';
+import { TaskInputComponent } from './components/tasks/task-input/task-input.component';
 
 const appRoutes: Routes = [
-  { path: 'calendar', component: CalendarComponent, resolve: { crisis: RouterResolver } },
-  { path: 'finance', component: FinanceComponent, resolve: { crisis: RouterResolver } },
-  { path: '', component: HomeComponent, resolve: { crisis: RouterResolver } },
-  { path: 'notes', component: NotesComponent, resolve: { crisis: RouterResolver } },
-  { path: 'shopping-list', component: ShoppingListComponent, resolve: { crisis: RouterResolver } },
-  { path: 'tasks', component: TasksComponent, resolve: { crisis: RouterResolver } },
-  { path: 'work-tracker', component: WorkTrackerComponent, resolve: { crisis: RouterResolver }}
-  ];
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'calendar', component: CalendarComponent },
+  { path: 'finance', component: FinanceComponent },
+  { path: 'notes', component: NotesComponent },
+  { path: 'shopping-list', component: ShoppingListComponent },
+  { path: 'tasks', component: TasksComponent },
+  { path: 'work-tracker', component: WorkTrackerComponent }
+];
 
 @NgModule({
   declarations: [
@@ -52,7 +55,8 @@ const appRoutes: Routes = [
     ProgressBarComponent,
     DateComponent,
     TaskItemComponent,
-    TaskInputComponent
+    TaskInputComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -62,11 +66,11 @@ const appRoutes: Routes = [
     NgProgressRouterModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
+    AngularFirestoreModule,
+    AngularFireAuthModule,
     FormsModule
   ],
-  providers: [RouterResolver],
+  providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-
-}
+export class AppModule {}

@@ -11,13 +11,13 @@
   min-height: 45px;
 }
 .icon, .icon-success{
-  background-image: url("../../assets/images/icons/circle.png");
+  background-image: url("../../../../assets/images/icons/circle.png");
   min-width: 24px;
   min-height: 24px;
   margin: 15px;
 }
 .icon-success{
-  background-image: url("../../assets/images/icons/verified.png");
+  background-image: url("../../../../assets/images/icons/verified.png");
 }
 .label-text{
   min-width: 300px;
@@ -33,7 +33,7 @@
 }
 
 .recycle{
-  background-image: url("../../assets/images/icons/recycling-bin.png");
+  background-image: url("../../../../assets/images/icons/recycling-bin.png");
   min-width: 16px;
   min-height: 16px;
   margin: 15px 20px;

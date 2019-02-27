@@ -9,7 +9,7 @@ export const environment = {
     authDomain: 'orginizer-35d38.firebaseapp.com',
     databaseURL: 'https://orginizer-35d38.firebaseio.com',
     projectId: 'orginizer-35d38',
-    storageBucket: '',
+    storageBucket: 'orginizer-35d38.appspot.com',
     messagingSenderId: '711101829924'
   }
 };
