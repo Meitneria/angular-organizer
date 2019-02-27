@@ -1,6 +1,5 @@
-.task{
+.task {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   width: 60%;
@@ -10,31 +9,59 @@
   margin: 5px;
   min-height: 45px;
 }
-.icon, .icon-success{
+.icon,
+.icon-success {
   background-image: url("../../../../assets/images/icons/circle.png");
   min-width: 24px;
   min-height: 24px;
   margin: 15px;
 }
-.icon-success{
+.icon-success {
   background-image: url("../../../../assets/images/icons/verified.png");
 }
-.label-text{
+.label-text {
   min-width: 300px;
 }
-.label-date{
+.label-date {
   display: flex;
   flex-direction: column;
   margin: 15px;
-  min-width: 30px;
+  width: 60px;
 }
-.small{
+.date {
+  align-self: flex-end;
+}
+.small {
   font-size: 11px;
 }
-
-.recycle{
+.recycle {
+  display: block;
   background-image: url("../../../../assets/images/icons/recycling-bin.png");
   min-width: 16px;
   min-height: 16px;
   margin: 15px 20px;
+  align-self: flex-end;
+}
+
+@media screen and (max-width: 550px) {
+  .task {
+    min-width: 300px;
+  }
+  .label-text {
+    min-width: 150px;
+    max-width: 150px;
+    font-size: 13px;
+  }
+  .label-date {
+    font-size: 11px;
+    max-width: 47px;
+    min-width: 47px;
+    margin-left: 0;
+  }
+  .small {
+    font-size: 9px;
+  }
+  .recycle {
+    margin: 15px 10px;
+  }
 }

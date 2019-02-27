@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { ButtonComponent } from './button/button.component';
 import { HomeComponent } from './home/home.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { TasksComponent } from './components/tasks/tasks.component';
@@ -20,6 +19,7 @@ import { DateComponent } from './date/date.component';
 import { NgProgressModule } from '@ngx-progressbar/core';
 import { NgProgressRouterModule } from '@ngx-progressbar/router';
 
+import { FirestoreSettingsToken } from '@angular/fire/firestore';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -27,6 +27,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../environments/environment';
 import { TaskItemComponent } from './components/tasks/task-item/task-item.component';
 import { TaskInputComponent } from './components/tasks/task-input/task-input.component';
+
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -43,7 +44,6 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    ButtonComponent,
     HomeComponent,
     CalendarComponent,
     TasksComponent,
@@ -70,7 +70,7 @@ const appRoutes: Routes = [
     AngularFireAuthModule,
     FormsModule
   ],
-  providers: [],
+  providers: [{ provide: FirestoreSettingsToken, useValue: {} }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

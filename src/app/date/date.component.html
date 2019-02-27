@@ -1,14 +1,18 @@
 <section>
-  <div class="date">
-    <div class="day">
-      {{ today | date: "EEEE" }}
+  <div class="header">
+    <i class="material-icons icon">navigate_before</i>
+    <div class="date">
+      <div class="day">
+        {{ today | date: "EEEE" }}
+      </div>
+      <div class="circle"></div>
+      <div class="month">
+        {{ today | date: "d MMMM" }}
+      </div>
     </div>
-    <div class="circle"></div>
-    <div class="month">
-      {{ today | date: "d MMMM" }}
-    </div>
-    <div *ngIf="authService.isLoggedIn">
-      <button class="nav-link" (click)="authService.SignOut()">Logout</button>
-    </div>
+    <i class="material-icons icon">menu</i>
   </div>
+  <!-- <div *ngIf="authService.isLoggedIn">
+      <button class="nav-link" (click)="authService.SignOut()">Logout</button>
+    </div> -->
 </section>

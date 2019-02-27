@@ -15,5 +15,11 @@
   width: 80%;
 }
 
+@media screen and (max-width: 400px){
+  .task-input{
+    width: 100%;
+  }
+}
+
 
 

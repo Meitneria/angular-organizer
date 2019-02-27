@@ -1,3 +1,8 @@
+.flex {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
 a {
   display: block;
   text-align: center;
@@ -7,21 +12,25 @@ a {
   color: black;
 }
 .icon {
+  align-self: center;
   margin: 15px;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
   .icon {
-    width: 65%;
-    margin: 10px 15px;
+    width: 50%;
+  }
+  a {
+    font-size: 14px;
   }
 }
 
 @media screen and (max-width: 400px) {
   .icon {
-    margin: 5px 15px;
+    width: 45%;
+    margin: 25px 0 10px;
   }
   a {
-    font-size: 14px;
+    font-size: 12px;
   }
 }

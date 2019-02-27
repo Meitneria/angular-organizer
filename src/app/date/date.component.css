@@ -1,25 +1,54 @@
-.date{
+.header {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   padding: 10px 0px;
   border-bottom: 1px solid #f4f5f5;
 }
+.icon{
+  font-size: 36px;
+  margin: 5px 30px 0; 
+}
 
-.day, .month{
+.icon:hover{
+  cursor: pointer;
+}
+
+.date {
+  display: flex;
+  justify-content: center;
+}
+
+.day,
+.month {
   margin: 20px;
   font-size: 10pt;
   font-weight: bold;
 }
 
-.month{
+.month {
   color: #939393;
   font-weight: normal;
 }
 
-.circle{
+.circle {
   margin-top: 27px;
   width: 5px;
   height: 5px;
   background-color: black;
   border-radius: 30px;
+}
+
+@media screen and (max-width: 400px) {
+  .day,
+  .month {
+    margin: 10px;
+    font-size: 9pt;
+  }
+  .circle {
+    margin-top: 17px;
+  }
+  .icon{
+    font-size: 24px;
+    margin: 5px 20px 0; 
+  }  
 }
