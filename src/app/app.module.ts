@@ -61,7 +61,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    NgProgressModule.forRoot(),
+    NgProgressModule,
     RouterModule.forRoot(appRoutes),
     NgProgressRouterModule,
     AngularFireModule.initializeApp(environment.firebase),

@@ -1,6 +1,6 @@
 <section>
   <div class="header">
-    <i class="material-icons icon">navigate_before</i>
+    <i class="material-icons icon" (click)="goBack()">navigate_before</i>
     <div class="date">
       <div class="day">
         {{ today | date: "EEEE" }}
@@ -10,7 +10,7 @@
         {{ today | date: "d MMMM" }}
       </div>
     </div>
-    <i class="material-icons icon">menu</i>
+    <i class="material-icons icon" (click)="authService.SignOut()">menu</i>
   </div>
   <!-- <div *ngIf="authService.isLoggedIn">
       <button class="nav-link" (click)="authService.SignOut()">Logout</button>
