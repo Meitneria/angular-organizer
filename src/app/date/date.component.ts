@@ -1,5 +1,6 @@
 import { AuthService } from '../services/auth.service.service';
 import { Component } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-date',
@@ -7,6 +8,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./date.component.css']
 })
 export class DateComponent {
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private location: Location) {}
   today: number = Date.now();
+  goBack() {
+    this.location.back();
+  }
 }
