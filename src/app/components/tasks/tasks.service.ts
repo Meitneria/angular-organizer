@@ -1,31 +1,26 @@
-import { Injectable } from "@angular/core";
-import { AngularFireDatabase, AngularFireList } from "angularfire2/database";
-import { AngularFireAuth } from "@angular/fire/auth";
+import { Injectable } from '@angular/core';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
+
 export class TasksService {
   toDoList: AngularFireList<any>;
   userId: string;
-  constructor(
-    private firebasedb: AngularFireDatabase,
-    public afAuth: AngularFireAuth
-  ) {
-    this.afAuth.authState.subscribe(user => {
-      if (user) {
-        this.userId = user.uid;
-      }
-    });
+
+  constructor(private firebasedb: AngularFireDatabase) {
+    this.userId = JSON.parse(localStorage.getItem('user')).uid;
   }
+
   getToDoList() {
-    this.toDoList = this.firebasedb.list("titles/" + this.userId);
+    this.toDoList = this.firebasedb.list('titles/' + this.userId);
     return this.toDoList;
   }
 
-  public addTitle(title: string,  info: string = null, date: number): void {
-    this.firebasedb.database.ref("titles").push().key;
-    this.firebasedb.database.ref("titles/" + this.userId).push({
+  public addTitle(title: string, info: string = null, date: number): void {
+    this.firebasedb.database.ref('titles').push().key;
+    this.firebasedb.database.ref('titles/' + this.userId).push({
       title: title,
       info: info,
       date: date,
@@ -39,5 +34,4 @@ export class TasksService {
   RemoveTitle($key: string) {
     this.toDoList.remove($key);
   }
-
 }
