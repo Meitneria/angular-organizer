@@ -40,4 +40,19 @@ export class TasksService {
     this.toDoList.remove($key);
   }
 
+  getUncheckedCount() {
+    const starCountRef = this.firebasedb.database.ref("titles/" + 'nHQ9CBxEFoUcCS6mAehs1JRoUo52');
+    const promise = new Promise(resolve => {
+      starCountRef.on('value', snapshot => {
+        let count: number;
+        if (snapshot.val()) {
+          count = Object.values(snapshot.val()).filter(item => !item.isChecked).length;
+        } else {
+          count = 0;
+        }
+        resolve(count)
+      });
+    });
+    return promise;
+  }
 }
