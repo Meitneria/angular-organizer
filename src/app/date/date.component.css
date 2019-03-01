@@ -65,3 +65,7 @@
   width: 200px;
   display: flex;
 }
+
+.user-name {
+  color: #000;
+}

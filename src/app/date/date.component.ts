@@ -14,4 +14,8 @@ export class DateComponent {
   goBack() {
     this.location.back();
   }
+  logOut() {
+    this.user = null;
+    this.authService.SignOut();
+  }
 }
