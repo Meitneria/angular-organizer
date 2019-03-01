@@ -1,13 +1,14 @@
-import { Component, Input, OnChanges } from "@angular/core";
+import { Component, Input, OnChanges } from '@angular/core';
+import { Task } from './../../../models/tasks';
 
 @Component({
-  selector: "app-progress-bar",
-  templateUrl: "./progress-bar.component.html",
-  styleUrls: ["./progress-bar.component.css"]
+  selector: 'app-progress-bar',
+  templateUrl: './progress-bar.component.html',
+  styleUrls: ['./progress-bar.component.css']
 })
 export class ProgressBarComponent implements OnChanges {
   @Input()
-  tasks: any;
+  tasks: Task[];
   tasksEverage: number = 0;
   tasksDone: number = 0;
 
