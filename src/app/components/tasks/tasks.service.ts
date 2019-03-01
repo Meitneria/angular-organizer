@@ -44,8 +44,8 @@ export class TasksService {
   }
 
   getUncheckedCount() {
-    var starCountRef = this.firebasedb.database.ref("titles/" + 'nHQ9CBxEFoUcCS6mAehs1JRoUo52');
-    var promise = new Promise(resolve => {
+    const starCountRef = this.firebasedb.database.ref("titles/" + 'nHQ9CBxEFoUcCS6mAehs1JRoUo52');
+    const promise = new Promise(resolve => {
       starCountRef.on('value', snapshot => {
         let count: number;
         if (snapshot.val()) {
