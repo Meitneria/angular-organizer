@@ -47,7 +47,12 @@ export class TasksService {
     var starCountRef = this.firebasedb.database.ref("titles/" + 'nHQ9CBxEFoUcCS6mAehs1JRoUo52');
     var promise = new Promise(resolve => {
       starCountRef.on('value', snapshot => {
-        const count = Object.values(snapshot.val()).filter(item => !item.isChecked).length;
+        let count: number;
+        if (snapshot.val()) {
+          count = Object.values(snapshot.val()).filter(item => !item.isChecked).length;
+        } else {
+          count = 0;
+        }
         resolve(count)
       });
     });
