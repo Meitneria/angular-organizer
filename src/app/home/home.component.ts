@@ -1,13 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Item } from '../models/item';
+import { TasksService} from '../components/tasks/tasks.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+  providers: [TasksService]
 })
 
-export class HomeComponent {
+export class HomeComponent  implements OnInit {
+  tasksCount: any = 0;
+  countLoading: boolean = true;
+  notificationKey = 'Tasks';
+
+  ngOnInit() {
+    this.taskService.getUncheckedCount()
+    .then(res => {
+      this.tasksCount = res,
+      this.countLoading = false
+    })
+  }
+
+
+
+  constructor(private taskService: TasksService) {}
   items: Item[] = [
     {
      name: 'Calendar',
@@ -45,7 +62,7 @@ export class HomeComponent {
   onMouseEnter(index: number) {
     this.activeIndex = index;
   }
-  
+
   onMouseLeave() {
     this.activeIndex = undefined;
   }

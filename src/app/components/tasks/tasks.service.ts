@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { Task } from './../../models/tasks';
 
 @Injectable({
   providedIn: 'root'
@@ -33,5 +34,21 @@ export class TasksService {
   }
   RemoveTitle($key: string) {
     this.toDoList.remove($key);
+  }
+
+  getUncheckedCount() {
+    const starCountRef = this.firebasedb.database.ref("titles/" + this.userId);
+    const promise = new Promise(resolve => {
+      starCountRef.on('value', snapshot => {
+        let count: number;
+        if (snapshot.val()) {
+          count = Object.values(snapshot.val()).filter((item:Task) => !item.isChecked).length;
+        } else {
+          count = 0;
+        }
+        resolve(count)
+      });
+    });
+    return promise;
   }
 }

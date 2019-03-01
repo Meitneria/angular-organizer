@@ -10,7 +10,7 @@
   border:none;
   border-radius: 10px;
   width: 40%;
-  max-width: 400px; 
+  max-width: 400px;
   margin: 10px 10px;
   display: flex;
   justify-content: center;
@@ -27,4 +27,58 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.tasks-count {
+  background-color: #e0677d;
+  padding: 5px 10px;
+  border-radius: 50%;
+  min-width: 10px;
+  color: #fff;
+  text-align: center;
+}
+
+.tasks-count-position {
+  position: relative;
+  left: 55%;
+  bottom: 40%;
+  }
+
+.tasks-spinner {
+  position: relative;
+  left: 55%;
+  bottom: 40%;
+}
+
+.spinner-img {
+  width: 30px;
+}
+
+@media screen and (min-width: 850px) {
+  .tasks-count-position {
+    left: 55%;
+    bottom: 43%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .tasks-count-position {
+    padding: 2px 8px;
+    left: 71%;
+    bottom: 34%;
+  }
+}
+
+@media screen and (min-width: 401px) and (max-width: 500px) {
+  .tasks-count-position {
+    left: 68%;
+    bottom: 35%;
+  }
+}
+
+@media screen and (min-width: 501px) and (max-width: 600px) {
+  .tasks-count-position {
+    left: 58%;
+    bottom: 38%;
+  }
 }
