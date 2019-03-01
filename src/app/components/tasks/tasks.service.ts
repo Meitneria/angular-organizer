@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { AngularFireDatabase, AngularFireList } from "angularfire2/database";
 import { AngularFireAuth } from "@angular/fire/auth";
+import { Task } from './../../models/tasks';
 
 @Injectable({
   providedIn: "root"
@@ -41,12 +42,12 @@ export class TasksService {
   }
 
   getUncheckedCount() {
-    const starCountRef = this.firebasedb.database.ref("titles/" + 'nHQ9CBxEFoUcCS6mAehs1JRoUo52');
+    const starCountRef = this.firebasedb.database.ref("titles/" + this.userId);
     const promise = new Promise(resolve => {
       starCountRef.on('value', snapshot => {
         let count: number;
         if (snapshot.val()) {
-          count = Object.values(snapshot.val()).filter(item => !item.isChecked).length;
+          count = Object.values(snapshot.val()).filter((item: Task) => !item.isChecked).length;
         } else {
           count = 0;
         }
