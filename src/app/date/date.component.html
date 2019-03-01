@@ -10,7 +10,10 @@
         {{ today | date: "d MMMM" }}
       </div>
     </div>
-    <i class="material-icons icon" (click)="authService.SignOut()">menu</i>
+    <img [src]='user.photoURL' class="user-img icon" (click)="authService.SignOut()">
+  </div>
+  <div class="user-menu">
+    {{ user.displayName }}
   </div>
   <!-- <div *ngIf="authService.isLoggedIn">
       <button class="nav-link" (click)="authService.SignOut()">Logout</button>

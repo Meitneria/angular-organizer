@@ -10,6 +10,7 @@ import { Location } from '@angular/common';
 export class DateComponent {
   constructor(private authService: AuthService, private location: Location) {}
   today: number = Date.now();
+  user = this.authService.getUser();
   goBack() {
     this.location.back();
   }
