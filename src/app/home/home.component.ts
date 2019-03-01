@@ -13,6 +13,7 @@ import { TasksService} from '../components/tasks/tasks.service';
 export class HomeComponent  implements OnInit {
   tasksCount: any = 0;
   countLoading: boolean = true;
+  notificationKey = 'Tasks';
 
   ngOnInit() {
     this.taskService.getUncheckedCount()

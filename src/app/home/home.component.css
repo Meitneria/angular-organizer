@@ -50,6 +50,10 @@
   bottom: 40%;
 }
 
+.spinner-img {
+  width: 30px;
+}
+
 @media screen and (min-width: 850px) {
   .tasks-count-position {
     left: 55%;

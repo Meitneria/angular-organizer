@@ -1,10 +1,10 @@
 <section class="row">
   <div class="part" *ngFor="let item of items; let index = index">
-      <div *ngIf="item.name==='Tasks' && !countLoading" class="tasks-count tasks-count-position">
+      <div *ngIf="item.name===notificationKey && !countLoading" class="tasks-count tasks-count-position">
         {{tasksCount}}
       </div>
-      <div *ngIf="item.name==='Tasks' && countLoading" class="tasks-spinner tasks-count-position">
-        <img src="https://loading.io/spinners/coolors/lg.palette-rotating-ring-loader.gif" width="30px">
+      <div *ngIf="item.name===notificationKey && countLoading" class="tasks-spinner tasks-count-position">
+        <img src="https://loading.io/spinners/coolors/lg.palette-rotating-ring-loader.gif" class="spinner-img">
       </div>
       <app-home-item class="center"
         [item]="item"
