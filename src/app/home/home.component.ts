@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Item } from '../models/item';
 import { TasksService} from '../components/tasks/tasks.service';
 
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

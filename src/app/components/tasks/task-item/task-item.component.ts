@@ -1,5 +1,5 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Task } from './../../../models/tasks';
 @Component({
   selector: 'app-task-item',
   templateUrl: './task-item.component.html',
@@ -7,7 +7,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 })
 export class TaskItemComponent {
   @Input()
-  task: any;
+  task: Task;
   @Output()
   remove: EventEmitter<any> = new EventEmitter();
   @Output()
@@ -18,6 +18,6 @@ export class TaskItemComponent {
   }
 
   onCheck($key: string, isChecked: boolean) {
-    this.check.emit({key: $key, checked: isChecked});
+    this.check.emit({ key: $key, checked: isChecked });
   }
 }
