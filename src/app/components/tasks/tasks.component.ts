@@ -27,11 +27,12 @@ export class TasksComponent implements OnInit {
           data['$key'] = element.key;
           this.taskArray.push(data);
         });
-        this.taskArray.sort((a, b) => {
+        this.taskArray.sort((a: any, b: any) => {
           return a.isChecked - b.isChecked;
         });
       });
   }
+
   onAdd(newTask: any) {
     const date = Date.now();
     this.taskService.addTitle(newTask.itemTitle, newTask.itemInfo, date);

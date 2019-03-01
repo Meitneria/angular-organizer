@@ -28,6 +28,15 @@ import { environment } from '../environments/environment';
 import { TaskItemComponent } from './components/tasks/task-item/task-item.component';
 import { TaskInputComponent } from './components/tasks/task-input/task-input.component';
 
+import {
+  MatButtonModule,
+  MatBadgeModule,
+  MatIconModule
+} from '@angular/material';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -68,7 +77,14 @@ const appRoutes: Routes = [
     AngularFireDatabaseModule,
     AngularFirestoreModule,
     AngularFireAuthModule,
-    FormsModule
+    FormsModule,
+    MatButtonModule,
+    MatBadgeModule,
+    MatIconModule,
+    MatProgressSpinnerModule,
+    MatProgressBarModule,
+    MatCardModule,
+    MatMenuModule
   ],
   providers: [{ provide: FirestoreSettingsToken, useValue: {} }],
   bootstrap: [AppComponent]

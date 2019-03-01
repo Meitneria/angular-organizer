@@ -1,3 +1,5 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
 body{
   background-color: #fcfafa;
   font-family: 'Metrophobic', sans-serif;
@@ -7,3 +9,5 @@ body{
 .hover-cursor{
   cursor: pointer;
 }
+
+

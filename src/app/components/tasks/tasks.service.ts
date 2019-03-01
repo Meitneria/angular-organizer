@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { Injectable } from "@angular/core";
+import { AngularFireDatabase, AngularFireList } from "angularfire2/database";
 import { Task } from './../../models/tasks';
 
 @Injectable({
@@ -42,7 +42,7 @@ export class TasksService {
       starCountRef.on('value', snapshot => {
         let count: number;
         if (snapshot.val()) {
-          count = Object.values(snapshot.val()).filter((item:Task) => !item.isChecked).length;
+          count = Object.values(snapshot.val()).filter((item: Task) => !item.isChecked).length;
         } else {
           count = 0;
         }
