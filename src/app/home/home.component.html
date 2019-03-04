@@ -1,23 +1,5 @@
 <section class="row">
-  <div class="part" *ngFor="let item of items; let index = index">
-    <div
-      *ngIf="item.name === notificationKey && !countLoading"
-      class="tasks-count-position"
-      matBadge="{{ tasksCount }}"
-    ></div>
-    <div
-      *ngIf="item.name === notificationKey && countLoading"
-      class="tasks-spinner tasks-count-position"
-    >
-      <mat-progress-spinner
-        class="spinner-img"
-        [color]="primary"
-        [mode]="mode"
-        [diameter]="diameter"
-        [value]="value"
-      >
-      </mat-progress-spinner>
-    </div>
+  <div class="part" *ngFor="let item of items">
     <app-home-item
       class="center"
       [item]="item"
@@ -27,5 +9,22 @@
       (mouseleave)="onMouseLeave()"
     >
     </app-home-item>
+    <div
+      *ngIf="item.name === notificationKey && !countLoading"
+      matBadge="{{ tasksCount }}"
+      class="tasks-spinner tasks-notifier"
+    ></div>
+    <div
+      *ngIf="item.name === notificationKey && countLoading"
+      class="tasks-spinner"
+    >
+      <mat-progress-spinner
+        [color]="primary"
+        [mode]="mode"
+        [diameter]="diameter"
+        [value]="value"
+      >
+      </mat-progress-spinner>
+    </div>
   </div>
 </section>

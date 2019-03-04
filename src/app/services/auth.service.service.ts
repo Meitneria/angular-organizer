@@ -48,6 +48,14 @@ export class AuthService {
       });
   }
 
+  IsUserAuthorized() {
+    if (this.user) {
+      this.ngZone.run(() => {
+        this.router.navigate(['home']);
+      });
+    }
+  }
+
   SetUserData(user) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(
       `users/${user.uid}`
