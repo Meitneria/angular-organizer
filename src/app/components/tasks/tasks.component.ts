@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TasksService } from './tasks.service';
 import * as moment from 'moment';
+import { Task } from '../../models/tasks'
 
 @Component({
   selector: 'app-tasks',
@@ -24,10 +25,10 @@ export class TasksComponent implements OnInit {
       .subscribe(item => {
         this.taskArray = [];
         item.forEach(element => {
-          const data = element.payload.toJSON();
+          const data: any = element.payload.toJSON();
           data['$key'] = element.key;
           data.time = moment(data.date).format('h:mm');
-          data.date = moment(data.date).fromNow();
+          data.dateFromNow = moment(data.date).fromNow();
           console.log(data);
           this.taskArray.push(data);
         });
