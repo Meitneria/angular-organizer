@@ -1,18 +1,31 @@
 <section class="row">
   <div class="part" *ngFor="let item of items; let index = index">
-      <div *ngIf="item.name===notificationKey && !countLoading" class="tasks-count tasks-count-position">
-        {{tasksCount}}
-      </div>
-      <div *ngIf="item.name===notificationKey && countLoading" class="tasks-spinner tasks-count-position">
-        <img src="https://loading.io/spinners/coolors/lg.palette-rotating-ring-loader.gif" class="spinner-img">
-      </div>
-      <app-home-item class="center"
-        [item]="item"
-        [id]="index"
-        [activeId]="activeIndex"
-        (mouseenter)="onMouseEnter(index)"
-        (mouseleave)="onMouseLeave()"
+    <div
+      *ngIf="item.name === notificationKey && !countLoading"
+      class="tasks-count-position"
+      matBadge="{{ tasksCount }}"
+    ></div>
+    <div
+      *ngIf="item.name === notificationKey && countLoading"
+      class="tasks-spinner tasks-count-position"
+    >
+      <mat-progress-spinner
+        class="spinner-img"
+        [color]="primary"
+        [mode]="mode"
+        [diameter]="diameter"
+        [value]="value"
       >
-      </app-home-item>
+      </mat-progress-spinner>
+    </div>
+    <app-home-item
+      class="center"
+      [item]="item"
+      [id]="index"
+      [activeId]="activeIndex"
+      (mouseenter)="onMouseEnter(index)"
+      (mouseleave)="onMouseLeave()"
+    >
+    </app-home-item>
   </div>
 </section>

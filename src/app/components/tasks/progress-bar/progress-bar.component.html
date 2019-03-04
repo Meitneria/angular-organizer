@@ -1,7 +1,17 @@
 <section>
   <div class="progress-bar">
-    <div class="taskname">tasks done</div>
-    <div class="task">{{ tasksDone }}</div>
-    <div class="task">{{ tasksEverage }}</div>
+    <div class="progress-bar-label">
+      <div class="taskname">tasks done</div>
+      <div class="task">{{ tasksDone }}</div>
+      <div class="task">{{ tasksEverage }}</div>
+    </div>
+    <mat-progress-bar
+      class="progress-bar-margin"
+      [value]= "tasksValue"
+      [color]="primary"
+      [mode]="mode"
+      [value]="determinate"
+    >
+    </mat-progress-bar>
   </div>
 </section>
