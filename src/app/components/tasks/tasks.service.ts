@@ -19,7 +19,7 @@ export class TasksService {
     return this.toDoList;
   }
 
-  public addTitle(title: string, info: string = null, date: number): void {
+  public addTitle(title: string, info: string = null, date: any): void {
     this.firebasedb.database.ref('titles').push().key;
     this.firebasedb.database.ref('titles/' + this.userId).push({
       title: title,
