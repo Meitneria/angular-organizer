@@ -3,6 +3,10 @@ import { Router } from '@angular/router';
 
 import { AngularFireAuth } from '@angular/fire/auth';
 import { User, UserInfo, auth } from 'firebase';
+
+import { Store } from '@ngrx/store';
+import { SetUser } from '../resource/user/user.actions';
+
 import {
   AngularFirestore,
   AngularFirestoreDocument
@@ -15,6 +19,7 @@ export class AuthService {
   user: User;
 
   constructor(
+    private store: Store<any>,
     public afs: AngularFirestore,
     public afAuth: AngularFireAuth,
     public router: Router,
@@ -24,6 +29,7 @@ export class AuthService {
       if (user) {
         this.user = user;
         localStorage.setItem('user', JSON.stringify(this.user));
+        this.store.dispatch(new SetUser({ user: user }));
       } else {
         localStorage.setItem('user', null);
       }
@@ -76,6 +82,7 @@ export class AuthService {
   }
 
   SignOut() {
+    this.store.dispatch(new SetUser({ user: null }));
     return this.afAuth.auth.signOut().then(() => {
       localStorage.removeItem('user');
       this.router.navigate(['login']);

@@ -1,6 +1,9 @@
 import { AuthService } from '../services/auth.service.service';
 import { Component } from '@angular/core';
 import { Location } from '@angular/common';
+import { Store } from '@ngrx/store';
+
+import { UserInfo } from 'firebase';
 
 @Component({
   selector: 'app-date',
@@ -8,14 +11,21 @@ import { Location } from '@angular/common';
   styleUrls: ['./date.component.css']
 })
 export class DateComponent {
-  constructor(private authService: AuthService, private location: Location) {}
+  constructor(
+    private authService: AuthService,
+    private location: Location,
+    private store: Store<{ data }>
+  ) {
+    this.store.select('user').subscribe(data => this.user = data.user );
+  }
+
+
   today: number = Date.now();
-  user = this.authService.getUser();
+  user: UserInfo;
   goBack() {
     this.location.back();
   }
   logOut() {
-    this.user = null;
     this.authService.SignOut();
   }
 }

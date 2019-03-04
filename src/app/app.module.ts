@@ -27,6 +27,9 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../environments/environment';
 import { TaskItemComponent } from './components/tasks/task-item/task-item.component';
 import { TaskInputComponent } from './components/tasks/task-input/task-input.component';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { userReducer } from './resource/user/user.reducer';
 
 import {
   MatButtonModule,
@@ -84,7 +87,12 @@ const appRoutes: Routes = [
     MatProgressSpinnerModule,
     MatProgressBarModule,
     MatCardModule,
-    MatMenuModule
+    MatMenuModule,
+    StoreModule.forRoot({ user: userReducer }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production
+    }),
   ],
   providers: [{ provide: FirestoreSettingsToken, useValue: {} }],
   bootstrap: [AppComponent]
