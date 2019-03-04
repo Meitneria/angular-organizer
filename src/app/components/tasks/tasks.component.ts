@@ -10,7 +10,7 @@ import { Task } from '../../models/tasks'
   providers: [TasksService]
 })
 export class TasksComponent implements OnInit {
-  taskArray: any;
+  taskArray: Task[];
   public itemTitle: string;
   public itemInfo: string;
 
@@ -29,7 +29,6 @@ export class TasksComponent implements OnInit {
           data['$key'] = element.key;
           data.time = moment(data.date).format('h:mm');
           data.dateFromNow = moment(data.date).fromNow();
-          console.log(data);
           this.taskArray.push(data);
         });
         this.taskArray.sort((a: any, b: any) => {
