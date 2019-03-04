@@ -49,7 +49,8 @@ export class AuthService {
   }
 
   IsUserAuthorized() {
-    if (this.user) {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user) {
       this.ngZone.run(() => {
         this.router.navigate(['home']);
       });
