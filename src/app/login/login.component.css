@@ -2,9 +2,18 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 20px;
 }
 .center {
   align-self: center;
+  text-align: center;
+  padding: 78px 34px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #fcfcfc, #f8f6f7);
+  box-shadow: 0 8px 9px rgba(0,0,0,0.1);
+}
+.logo {
+  width: 200px;
 }
 .google-button {
   height: 40px;
