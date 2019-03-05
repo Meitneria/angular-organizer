@@ -47,7 +47,7 @@ const appRoutes: Routes = [
   { path: 'finance', component: FinanceComponent },
   { path: 'notes', component: NotesComponent },
   { path: 'shopping-list', component: ShoppingListComponent },
-  { path: 'tasks', component: TasksComponent },
+  { path: 'projects', component: ProjectsComponent },
   { path: 'work-tracker', component: WorkTrackerComponent }
 ];
 

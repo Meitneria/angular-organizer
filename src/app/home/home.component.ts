@@ -30,9 +30,9 @@ export class HomeComponent implements OnInit {
       link: '/calendar'
     },
     {
-      name: 'Tasks',
+      name: 'Projects',
       icon: '../assets/images/icons/todo.png',
-      link: '/tasks'
+      link: '/projects'
     },
     {
       name: 'Finance',
