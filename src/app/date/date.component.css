@@ -61,9 +61,7 @@
 }
 
 .user-menu {
-  position: relative;
   width: 200px;
-  display: flex;
 }
 
 .user-name {
