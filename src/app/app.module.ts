@@ -40,6 +40,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
+import { GroupAvatarComponent } from './components/tasks/group-avatar/group-avatar.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -68,7 +69,8 @@ const appRoutes: Routes = [
     DateComponent,
     TaskItemComponent,
     TaskInputComponent,
-    LoginComponent
+    LoginComponent,
+    GroupAvatarComponent
   ],
   imports: [
     BrowserModule,
