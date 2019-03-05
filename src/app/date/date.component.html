@@ -10,10 +10,11 @@
         {{ today | date: "d MMMM" }}
       </div>
     </div>
-    <img [src]='user.photoURL' class="user-img icon" [matMenuTriggerFor]="menu">
-  <!-- <div *ngIf="authService.isLoggedIn">
-      <button class="nav-link" (click)="authService.SignOut()">Logout</button>
-    </div> -->
+    <img
+      [src]="user.photoURL"
+      class="user-img icon"
+      [matMenuTriggerFor]="menu"
+    />
   </div>
   <mat-menu #menu="matMenu">
     <span mat-menu-item disabled class="user-name">

@@ -1,19 +1,19 @@
-import { Injectable, NgZone } from '@angular/core';
-import { Router } from '@angular/router';
+import { Injectable, NgZone } from "@angular/core";
+import { Router } from "@angular/router";
 
-import { AngularFireAuth } from '@angular/fire/auth';
-import { User, UserInfo, auth } from 'firebase';
+import { AngularFireAuth } from "@angular/fire/auth";
+import { User, UserInfo, auth } from "firebase";
 
-import { Store } from '@ngrx/store';
-import { SetUser } from '../resource/user/user.actions';
+import { Store } from "@ngrx/store";
+import { SetUser } from "../resource/user/user.actions";
 
 import {
   AngularFirestore,
   AngularFirestoreDocument
-} from 'angularfire2/firestore';
+} from "angularfire2/firestore";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class AuthService {
   user: User;
@@ -28,10 +28,10 @@ export class AuthService {
     this.afAuth.authState.subscribe(user => {
       if (user) {
         this.user = user;
-        localStorage.setItem('user', JSON.stringify(this.user));
+        localStorage.setItem("user", JSON.stringify(this.user));
         this.store.dispatch(new SetUser({ user: user }));
       } else {
-        localStorage.setItem('user', null);
+        localStorage.setItem("user", null);
       }
     });
   }
@@ -45,7 +45,7 @@ export class AuthService {
       .signInWithPopup(provider)
       .then(result => {
         this.ngZone.run(() => {
-          this.router.navigate(['home']);
+          this.router.navigate(["home"]);
         });
         this.SetUserData(result.user);
       })
@@ -55,10 +55,10 @@ export class AuthService {
   }
 
   IsUserAuthorized() {
-    const user = JSON.parse(localStorage.getItem('user'));
+    const user = JSON.parse(localStorage.getItem("user"));
     if (user) {
       this.ngZone.run(() => {
-        this.router.navigate(['home']);
+        this.router.navigate(["home"]);
       });
     }
   }
@@ -84,18 +84,18 @@ export class AuthService {
   SignOut() {
     this.store.dispatch(new SetUser({ user: null }));
     return this.afAuth.auth.signOut().then(() => {
-      localStorage.removeItem('user');
-      this.router.navigate(['login']);
+      localStorage.removeItem("user");
+      this.router.navigate(["login"]);
     });
   }
 
   getUser() {
-    const user = JSON.parse(localStorage.getItem('user'));
+    const user = JSON.parse(localStorage.getItem("user"));
     return user;
   }
 
   get isLoggedIn(): boolean {
-    const user = JSON.parse(localStorage.getItem('user'));
+    const user = JSON.parse(localStorage.getItem("user"));
     return user !== null && user.emailVerified !== false ? true : false;
   }
 }

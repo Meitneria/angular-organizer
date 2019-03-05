@@ -1,0 +1,32 @@
+<section class="row">
+  <div class="part">
+    <div class="flex" (click)="openForm()">
+      <img class="icon" src="./../../../assets/images/icons/plus.png" />
+      <a *ngIf="!formIsOpen">Create new project</a>
+    </div>
+    <div *ngIf="formIsOpen" class="column">
+      <h3>Add project details</h3>
+      <form class="form ">
+        <mat-form-field class="full-width">
+          <input
+            matInput
+            placeholder="Add a title"
+            [(ngModel)]="projectTitle"
+            name="projectTitle"
+          />
+          <mat-error *ngIf="titleFormControl.hasError('required')">
+            Title is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </form>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="createProject(projectTitle)"
+        [disabled]="!projectTitle"
+      >
+        Confirm
+      </button>
+    </div>
+  </div>
+</section>

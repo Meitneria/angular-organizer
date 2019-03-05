@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { AngularFireDatabase, AngularFireList } from "angularfire2/database";
-import { Task } from './../../models/tasks';
+import { Task } from '../models/tasks';
 
 @Injectable({
   providedIn: 'root'
