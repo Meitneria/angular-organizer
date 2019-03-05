@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+  cursor: pointer;
 }
 a {
   display: block;
@@ -15,7 +16,6 @@ a {
   align-self: center;
   margin: 15px;
 }
-
 .row {
   display: flex;
   flex-direction: row;
@@ -27,17 +27,15 @@ a {
   background-color: white;
   border-radius: 10px;
   width: 40%;
+  padding: 60px 30px;
   max-width: 200px;
   margin: 10px 10px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.part:before {
-  content: "";
-  display: block;
-  padding-top: 100%;
-}
+
 .center {
   width: 100px;
   height: 100px;
@@ -45,6 +43,22 @@ a {
   flex-direction: column;
   align-items: center;
   flex: 1 1 auto;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.form {
+  margin-bottom: 25px;
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.full-width {
+  width: 100%;
 }
 
 @media screen and (max-width: 600px) {

@@ -5,10 +5,10 @@ export const initialState = {
     user: null
 };
  
-export function counterReducer(state = initialState, action: Action) {
+export function userReducer(state = initialState, action: any) {
   switch (action.type) {
     case ActionTypes.SetUser:
-      return { user: JSON.parse(localStorage.getItem('user'))};
+      return { user: action.payload.user};
 
     default:
       return state;

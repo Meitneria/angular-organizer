@@ -14,7 +14,6 @@ export class ProgressBarComponent implements OnChanges {
 
   tasksValue: number = 0;
 
-
   ngOnChanges() {
     if (this.tasks) {
       this.tasksEverage = this.tasks.length;
