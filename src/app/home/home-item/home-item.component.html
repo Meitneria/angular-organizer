@@ -1,6 +1,6 @@
-<div [@activeChildAnimation]="_state" class="flex">
+<div [@activeChildAnimation]="_state" class="flex" [routerLink]="item.link">
   <img class="icon" [src]="item.icon" />
-  <a [routerLink]="item.link">{{item.name}}</a>
+  <a>{{item.name}}</a>
 </div>
 
 

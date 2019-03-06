@@ -18,10 +18,10 @@ export class DateComponent {
   ) {
     this.store.select('user').subscribe(data => this.user = data.user );
   }
-
-
+  
   today: number = Date.now();
   user: UserInfo;
+
   goBack() {
     this.location.back();
   }
