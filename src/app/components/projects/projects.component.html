@@ -1,6 +1,7 @@
 <section class="row">
-    <div *ngFor="let project of projects" class="part">
+    <div *ngFor="let project of projects" class="part project-container">
         <div class="flex" (click)="openProject(project.id)">
+            <div class="project-avatar icon">{{ project.title[0] }}</div>
           <span class="project-title">{{ project.title }}</span>
         </div>
       </div>

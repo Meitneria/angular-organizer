@@ -70,6 +70,23 @@ a {
   color: black;
 }
 
+.project-container {
+  height: 100%;
+}
+
+.project-avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: #e0677d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 19px;
+  color: #fff;
+  text-transform: uppercase;
+}
+
 @media screen and (max-width: 600px) {
   .icon {
     width: 50%;
