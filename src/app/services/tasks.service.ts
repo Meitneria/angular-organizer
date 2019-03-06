@@ -43,15 +43,17 @@ export class TasksService {
     return this.toDoList;
   }
 
-  public addTitle(title: string, info: string = null, date: string): void {
-    this.firebasedb.database.ref("titles").push().key;
-    this.firebasedb.database.ref("titles/" + this.userId).push({
-      title: title,
-      info: info,
-      date: date,
-      isChecked: false
-    });
-  }
+  // public addTitle(title: string, info: string = null, date: string): void {
+  //   this.firebasedb.database.ref("titles").push().key;
+  //   this.firebasedb.database.ref("titles/" + this.userId).push({
+  //     title: title,
+  //     info: info,
+  //     date: date,
+  //     isChecked: false,
+  //     id: 
+  //     projectId:
+  //   });
+  // }
 
   CheckTitle($key: string, flag: boolean) {
     this.toDoList.update($key, { isChecked: !flag });
