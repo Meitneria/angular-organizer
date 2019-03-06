@@ -2,10 +2,7 @@ import { Injectable, NgZone } from "@angular/core";
 import { Router } from "@angular/router";
 import { Store } from "@ngrx/store";
 import { v4 as uuid } from "uuid";
-
 import { UserInfo } from "firebase";
-
-import { SetUser } from "../resource/user/user.actions";
 import { Project } from "../models/projects";
 
 import {
@@ -28,19 +25,22 @@ export class ProjectsService {
   }
 
   getProjectsId() {
-      return this.afs.collection('user_project', ref => ref.where("userId", "==", this.user.uid))
+    return this.afs
+      .collection("user_project", ref =>
+        ref.where("userId", "==", this.user.uid)
+      )
       .valueChanges();
   }
 
   getProjects(projectsId) {
-    return projectsId.map(item => (
-      this.afs.collection('projects', ref => ref.where("id", "==", item.projectId))
-      .valueChanges()
-    ));
+    return projectsId.map(item =>
+      this.afs
+        .collection("projects", ref => ref.where("id", "==", item.projectId))
+        .valueChanges()
+    );
   }
 
-
-  SetProjectData(project: Project, id: string) {
+  async SetProjectData(project: Project, id: string) {
     const projectRef: AngularFirestoreDocument<any> = this.afs.doc(
       `projects/${id}`
     );

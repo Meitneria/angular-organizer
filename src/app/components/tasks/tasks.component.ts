@@ -1,49 +1,45 @@
-import { Component, OnInit } from '@angular/core';
-import { TasksService } from '../../services/tasks.service';
-import * as moment from 'moment';
-import { Task } from '../../models/tasks'
+import { Component, OnInit } from "@angular/core";
+import { TasksService } from "../../services/tasks.service";
+import * as moment from "moment";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
-  selector: 'app-tasks',
-  templateUrl: './tasks.component.html',
-  styleUrls: ['./tasks.component.css'],
+  selector: "app-tasks",
+  templateUrl: "./tasks.component.html",
+  styleUrls: ["./tasks.component.css"],
   providers: [TasksService]
 })
 export class TasksComponent implements OnInit {
-  taskArray: Task[];
+  taskArray: any;
   public itemTitle: string;
   public itemInfo: string;
+  projectId: string;
 
-  project = { name: 'Project' };
+  project = { name: "Project" };
 
-  constructor(private taskService: TasksService) {}
+  constructor(
+    private taskService: TasksService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
-    this.itemTitle = '';
-    this.itemInfo = '';
-    this.taskService
-      .getToDoList()
-      .snapshotChanges()
-      .subscribe(item => {
-        this.taskArray = [];
-        item.forEach(element => {
-          const data: any = element.payload.toJSON();
-          data['$key'] = element.key;
-          data.time = moment(data.date).format('h:mm');
-          data.dateFromNow = moment(data.date).fromNow();
-          this.taskArray.push(data);
+    this.itemTitle = "";
+    this.itemInfo = "";
+    this.projectId = this.route.snapshot.paramMap.get("id");
+    this.taskService.CheckAccess(this.projectId).subscribe(data => {
+      if (data.length) {
+        this.taskService.getTasks(this.projectId).subscribe(data => {
+          this.taskArray = data;
         });
-        this.taskArray.sort((a: any, b: any) => {
-          return a.isChecked - b.isChecked;
-        });
-      });
+      }
+    });
   }
 
   onAdd(newTask: any) {
     const date = moment().format();
     this.taskService.addTitle(newTask.itemTitle, newTask.itemInfo, date);
-    this.itemTitle = '';
-    this.itemInfo = '';
+    this.itemTitle = "";
+    this.itemInfo = "";
   }
   onCheck(keys: any) {
     this.taskService.CheckTitle(keys.key, keys.checked);

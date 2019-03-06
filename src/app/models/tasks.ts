@@ -5,4 +5,6 @@ export interface Task {
   info: string;
   isChecked: boolean;
   title: string;
+  id: string;
+  projectId: string;
 }

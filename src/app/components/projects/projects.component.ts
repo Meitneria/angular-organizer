@@ -18,8 +18,8 @@ export class ProjectsComponent implements OnInit {
 
   constructor(
     private projectsService: ProjectsService,
-    public router: Router,
-    ) {}
+    public router: Router
+  ) {}
 
   openForm() {
     this.formIsOpen = !this.formIsOpen;
@@ -30,16 +30,15 @@ export class ProjectsComponent implements OnInit {
       this.projects = [];
       this.projectsService.getProjects(data).map(item => {
         item.subscribe(data => {
-            this.projects.push(...data);
+          this.projects.push(...data);
         });
-      })
+      });
     });
   }
 
   openProject(projectId: string) {
     this.router.navigate([`project/${projectId}`]);
   }
-
 
   createProject(projectTitle: string) {
     const date = moment().format();
