@@ -14,6 +14,8 @@ export class TasksComponent implements OnInit {
   public itemTitle: string;
   public itemInfo: string;
 
+  project = { name: 'Project' };
+
   constructor(private taskService: TasksService) {}
 
   ngOnInit() {

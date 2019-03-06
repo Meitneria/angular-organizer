@@ -44,6 +44,8 @@ import { MatCardModule } from "@angular/material/card";
 import { MatMenuModule } from "@angular/material/menu";
 import { ProjectsComponent } from "./components/projects/projects.component";
 import { MatInputModule } from "@angular/material/input";
+import { GroupAvatarComponent } from './components/tasks/group-avatar/group-avatar.component';
+
 
 const appRoutes: Routes = [
   { path: "", redirectTo: "login", pathMatch: "full" },
@@ -74,6 +76,7 @@ const appRoutes: Routes = [
     TaskItemComponent,
     TaskInputComponent,
     LoginComponent,
+    GroupAvatarComponent,
     ProjectsComponent
   ],
   imports: [
