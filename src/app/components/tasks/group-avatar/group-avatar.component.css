@@ -1,0 +1,28 @@
+.avatar {
+    width: 35px;
+    height: 35px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    margin-right: -10px;
+}
+
+.avatar:last-child {
+    margin-right: 0;
+}
+
+.avatar-group {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+}
+
+.avatar-plus {
+    background-color: #e0677d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 19px;
+    color: #fff;
+}

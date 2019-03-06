@@ -27,6 +27,19 @@ export class ProjectsService {
     this.store.select("user").subscribe(data => (this.user = data.user));
   }
 
+  getProjectsId() {
+      return this.afs.collection('user_project', ref => ref.where("userId", "==", this.user.uid))
+      .valueChanges();
+  }
+
+  getProjects(projectsId) {
+    return projectsId.map(item => (
+      this.afs.collection('projects', ref => ref.where("id", "==", item.projectId))
+      .valueChanges()
+    ));
+  }
+
+
   SetProjectData(project: Project, id: string) {
     const projectRef: AngularFirestoreDocument<any> = this.afs.doc(
       `projects/${id}`

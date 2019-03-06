@@ -1,4 +1,9 @@
 <section class="row">
+    <div *ngFor="let project of projects" class="part">
+        <div class="flex" (click)="openProject(project.id)">
+          <span class="project-title">{{ project.title }}</span>
+        </div>
+      </div>
   <div class="part">
     <div class="flex" (click)="openForm()">
       <img class="icon" src="./../../../assets/images/icons/plus.png" />

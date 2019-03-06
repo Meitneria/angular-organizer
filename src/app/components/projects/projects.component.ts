@@ -1,5 +1,6 @@
 import { ProjectsService } from "./../../services/projects.service";
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { FormControl, Validators } from "@angular/forms";
 import * as moment from "moment";
 import { v4 as uuid } from "uuid";
@@ -10,15 +11,35 @@ import { Project } from "./../../models/projects";
   templateUrl: "./projects.component.html",
   styleUrls: ["./projects.component.css"]
 })
-export class ProjectsComponent {
+export class ProjectsComponent implements OnInit {
+  projects = [];
   formIsOpen: boolean = false;
   titleFormControl = new FormControl("", [Validators.required]);
 
-  constructor(private projectsService: ProjectsService) {}
+  constructor(
+    private projectsService: ProjectsService,
+    public router: Router,
+    ) {}
 
   openForm() {
     this.formIsOpen = !this.formIsOpen;
   }
+
+  ngOnInit() {
+    this.projectsService.getProjectsId().subscribe(data => {
+      this.projects = [];
+      this.projectsService.getProjects(data).map(item => {
+        item.subscribe(data => {
+            this.projects.push(...data);
+        });
+      })
+    });
+  }
+
+  openProject(projectId: string) {
+    this.router.navigate([`project/${projectId}`]);
+  }
+
 
   createProject(projectTitle: string) {
     const date = moment().format();

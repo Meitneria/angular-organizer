@@ -1,0 +1,13 @@
+<div class="avatar-group">
+  <img
+    *ngFor="let avatar of shownAvatars"
+    [src]='avatar'
+    class="avatar"
+  >
+  <div
+   *ngIf="hidenAvatars.length"
+    class="avatar avatar-plus"
+  >
+    {{ hidenAvatars.length }}+
+  </div>
+</div>
