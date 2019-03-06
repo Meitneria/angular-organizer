@@ -12,7 +12,7 @@ import { Project } from "./../../models/projects";
   styleUrls: ["./projects.component.css"]
 })
 export class ProjectsComponent implements OnInit {
-  projects = [];
+  projects: Project[];
   formIsOpen: boolean = false;
   titleFormControl = new FormControl("", [Validators.required]);
 
