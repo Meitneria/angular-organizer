@@ -1,3 +1,4 @@
+import { User } from "firebase";
 import { Project } from "./../../models/projects";
 import { ProjectsService } from "./../../services/projects.service";
 import { Component, OnInit } from "@angular/core";
@@ -14,13 +15,13 @@ import { Task } from "src/app/models/tasks";
   providers: [TasksService, ProjectsService]
 })
 export class TasksComponent implements OnInit {
+  usersArray: User[] = [];
+  projectId: string;
   taskArray: Task[];
   currentProject: Project;
-
   itemTitle: string;
   itemInfo: string;
-  projectId: string;
-  
+
   constructor(
     private taskService: TasksService,
     private projectsService: ProjectsService,
@@ -34,6 +35,15 @@ export class TasksComponent implements OnInit {
     this.projectsService
       .getProject(this.projectId)
       .subscribe(data => (this.currentProject = data));
+
+    this.projectsService.getUsersId(this.projectId).subscribe(data => {
+      this.projectsService.getUsers(data).map(item => {
+        item.subscribe(data => {
+          this.usersArray.push(...data);
+        });
+      });
+    });
+
     this.taskService.CheckAccess(this.projectId).subscribe(data => {
       if (data.length) {
         this.taskService.getTasks(this.projectId).subscribe(data => {
@@ -52,7 +62,7 @@ export class TasksComponent implements OnInit {
       isChecked: false,
       id: id,
       projectId: this.projectId
-    }
+    };
     this.taskService.SetTasksData(task, id);
     this.itemTitle = "";
     this.itemInfo = "";
