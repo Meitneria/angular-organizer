@@ -3,6 +3,7 @@ import { ProjectsService } from "./../../services/projects.service";
 import { Component, OnInit } from "@angular/core";
 import { TasksService } from "../../services/tasks.service";
 import * as moment from "moment";
+import { v4 as uuid } from "uuid";
 import { ActivatedRoute } from "@angular/router";
 import { Task } from "src/app/models/tasks";
 
@@ -43,13 +44,21 @@ export class TasksComponent implements OnInit {
   }
 
   onAdd(newTask: any) {
-    const date = moment().format();
-    this.taskService.addTitle(newTask.itemTitle, newTask.itemInfo, date);
+    const id = uuid();
+    const task = {
+      title: newTask.itemTitle,
+      info: newTask.itemInfo,
+      date: moment().format(),
+      isChecked: false,
+      id: id,
+      projectId: this.projectId
+    }
+    this.taskService.SetTasksData(task, id);
     this.itemTitle = "";
     this.itemInfo = "";
   }
-  onCheck(keys: any) {
-    this.taskService.CheckTitle(keys.key, keys.checked);
+  onCheck(task: any) {
+    this.taskService.CheckTitle(task);
   }
   onRemove($key: string) {
     this.taskService.RemoveTitle($key);
