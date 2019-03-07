@@ -47,8 +47,8 @@ export class ProjectsService {
       ).valueChanges();
   }
 
-  getUsers(data) {
-    return data.map(item =>
+  getUsers(usersInProject) {
+    return usersInProject.map(item =>
       this.afs
         .collection("users", ref => ref.where("uid", "==", item.userId))
         .valueChanges()
