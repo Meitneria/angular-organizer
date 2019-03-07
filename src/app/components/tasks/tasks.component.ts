@@ -50,8 +50,8 @@ export class TasksComponent implements OnInit {
     this.itemTitle = "";
     this.itemInfo = "";
   }
-  onCheck(keys: any) {
-    this.taskService.CheckTitle(keys.key, keys.checked);
+  onCheck(task: any) {
+    this.taskService.CheckTitle(task);
   }
   onRemove($key: string) {
     this.taskService.RemoveTitle($key);
