@@ -1,13 +1,13 @@
 <div class="avatar-group">
   <img
-    *ngFor="let avatar of shownAvatars"
-    [src]='avatar'
+    *ngFor="let user of users.slice(0, 3)"
+    [src]='user.photoURL'
     class="avatar"
   >
   <div
-   *ngIf="hidenAvatars.length"
+   *ngIf="users.slice(3).length"
     class="avatar avatar-plus"
   >
-    {{ hidenAvatars.length }}+
+    {{ users.slice(3).length }}+
   </div>
 </div>

@@ -40,6 +40,21 @@ export class ProjectsService {
     );
   }
 
+  getUsersId(projectId) {
+    return this.afs
+      .collection("user_project", ref =>
+        ref.where("projectId", "==", projectId)
+      ).valueChanges();
+  }
+
+  getUsers(data) {
+    return data.map(item =>
+      this.afs
+        .collection("users", ref => ref.where("uid", "==", item.userId))
+        .valueChanges()
+    );
+  }
+
   async SetProjectData(project: Project, id: string) {
     const projectRef: AngularFirestoreDocument<any> = this.afs.doc(
       `projects/${id}`

@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { TasksService } from "../../services/tasks.service";
+import { ProjectsService } from "./../../services/projects.service";
 import * as moment from "moment";
 import { v4 as uuid } from "uuid";
 import { ActivatedRoute } from "@angular/router";
@@ -12,6 +13,7 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class TasksComponent implements OnInit {
   taskArray: any;
+  usersArray = [];
   public itemTitle: string;
   public itemInfo: string;
   projectId: string;
@@ -20,6 +22,7 @@ export class TasksComponent implements OnInit {
 
   constructor(
     private taskService: TasksService,
+    private projectsService: ProjectsService,
     private route: ActivatedRoute
   ) {}
 
@@ -27,6 +30,15 @@ export class TasksComponent implements OnInit {
     this.itemTitle = "";
     this.itemInfo = "";
     this.projectId = this.route.snapshot.paramMap.get("id");
+
+    this.projectsService.getUsersId(this.projectId).subscribe(data => {
+      this.projectsService.getUsers(data).map(item => {
+        item.subscribe(data => {
+          this.usersArray.push(...data);
+        });
+      });
+    });
+
     this.taskService.CheckAccess(this.projectId).subscribe(data => {
       if (data.length) {
         this.taskService.getTasks(this.projectId).subscribe(data => {

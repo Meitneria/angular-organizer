@@ -1,6 +1,6 @@
 <div class="project-header">
   <span class="project-title">{{ project.name }}</span>
-  <app-group-avatar></app-group-avatar>
+  <app-group-avatar [users] = usersArray></app-group-avatar>
 </div>
 <app-progress-bar
   [tasks] = "taskArray"
@@ -15,7 +15,7 @@
     </app-task-input>
     <app-task-item
       class="task-container"
-      *ngFor="let task of taskArray "
+      *ngFor ="let task of taskArray "
       [task] = "task"
       (check) = "onCheck($event)"
       (remove) = "onRemove($event)"
