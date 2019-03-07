@@ -1,3 +1,4 @@
+import { Connection } from "./../models/connection";
 import {
   AngularFirestore,
   AngularFirestoreDocument
@@ -21,20 +22,25 @@ export class TasksService {
   }
 
   CheckAccess(projectId: string) {
-    return this.afs.collection("user_project", ref =>ref
-    .where("userId", "==", this.userId)
-    .where("projectId", "==", projectId))
-    .valueChanges();
+    return this.afs
+      .collection<Connection>("user_project", ref =>
+        ref
+          .where("userId", "==", this.userId)
+          .where("projectId", "==", projectId)
+      )
+      .valueChanges();
   }
 
   getTasks(projectId: string) {
-    return this.afs.collection("tasks", ref =>ref
-    .where("projectId", "==", projectId))
-    .valueChanges();
+    return this.afs
+      .collection<Task>("tasks", ref => ref.where("projectId", "==", projectId))
+      .valueChanges();
   }
 
   SetTasksData(task: Task, id: string) {
-    const projectRef = this.afs.doc(`tasks/${id}`);
+    const projectRef: AngularFirestoreDocument<any> = this.afs.doc<Task>(
+      `tasks/${id}`
+    );
     return projectRef.set(task);
   }
 
