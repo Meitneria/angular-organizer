@@ -28,10 +28,10 @@ export class ProjectsComponent implements OnInit {
   ngOnInit() {
     this.projectsService.getProjectsId().subscribe(data => {
       this.projects = [];
-      this.projectsService.getProjects(data).map(item => {
-        item.subscribe(data => {
-          this.projects.push(...data);
-        });
+      data.map(item => {
+        this.projectsService
+          .getProject(item.projectId)
+          .subscribe(data => this.projects.push(data));
       });
     });
   }

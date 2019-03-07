@@ -2,8 +2,9 @@ import { Injectable, NgZone } from "@angular/core";
 import { Router } from "@angular/router";
 import { Store } from "@ngrx/store";
 import { v4 as uuid } from "uuid";
-import { UserInfo } from "firebase";
+import { UserInfo, User } from "firebase";
 import { Project } from "../models/projects";
+import { Connection } from "../models/connection";
 
 import {
   AngularFirestore,
@@ -26,43 +27,43 @@ export class ProjectsService {
 
   getProjectsId() {
     return this.afs
-      .collection("user_project", ref =>
+      .collection<Connection>("user_project", ref =>
         ref.where("userId", "==", this.user.uid)
       )
       .valueChanges();
   }
 
-  getProjects(projectsId) {
-    return projectsId.map(item =>
-      this.afs
-        .collection("projects", ref => ref.where("id", "==", item.projectId))
-        .valueChanges()
-    );
+  getProject(projectId: string) {
+    return this.afs
+      .collection("projects")
+      .doc<Project>(projectId)
+      .valueChanges();
   }
 
-  getUsersId(projectId) {
+  getUsersId(projectId: string) {
     return this.afs
-      .collection("user_project", ref =>
+      .collection<Connection>("user_project", ref =>
         ref.where("projectId", "==", projectId)
-      ).valueChanges();
+      )
+      .valueChanges();
   }
 
   getUsers(data) {
     return data.map(item =>
       this.afs
-        .collection("users", ref => ref.where("uid", "==", item.userId))
+        .collection<User>("users", ref => ref.where("uid", "==", item.userId))
         .valueChanges()
     );
   }
 
   async SetProjectData(project: Project, id: string) {
-    const projectRef: AngularFirestoreDocument<any> = this.afs.doc(
+    const projectRef: AngularFirestoreDocument<any> = this.afs.doc<Project>(
       `projects/${id}`
     );
     const connectionId = uuid();
-    const connectionRef: AngularFirestoreDocument<any> = this.afs.doc(
-      `user_project/${connectionId}`
-    );
+    const connectionRef: AngularFirestoreDocument<any> = this.afs.doc<
+      Connection
+    >(`user_project/${connectionId}`);
     connectionRef.set(
       { projectId: id, userId: this.user.uid },
       { merge: true }

@@ -1,24 +1,26 @@
+import { User } from "firebase";
+import { Project } from "./../../models/projects";
+import { ProjectsService } from "./../../services/projects.service";
 import { Component, OnInit } from "@angular/core";
 import { TasksService } from "../../services/tasks.service";
-import { ProjectsService } from "./../../services/projects.service";
 import * as moment from "moment";
 import { v4 as uuid } from "uuid";
 import { ActivatedRoute } from "@angular/router";
+import { Task } from "src/app/models/tasks";
 
 @Component({
   selector: "app-tasks",
   templateUrl: "./tasks.component.html",
   styleUrls: ["./tasks.component.css"],
-  providers: [TasksService]
+  providers: [TasksService, ProjectsService]
 })
 export class TasksComponent implements OnInit {
-  taskArray: any;
-  usersArray = [];
-  public itemTitle: string;
-  public itemInfo: string;
+  usersArray: User[] = [];
   projectId: string;
-
-  project = { name: "Project" };
+  taskArray: Task[];
+  currentProject: Project;
+  itemTitle: string;
+  itemInfo: string;
 
   constructor(
     private taskService: TasksService,
@@ -30,6 +32,9 @@ export class TasksComponent implements OnInit {
     this.itemTitle = "";
     this.itemInfo = "";
     this.projectId = this.route.snapshot.paramMap.get("id");
+    this.projectsService
+      .getProject(this.projectId)
+      .subscribe(data => (this.currentProject = data));
 
     this.projectsService.getUsersId(this.projectId).subscribe(data => {
       this.projectsService.getUsers(data).map(item => {
@@ -57,7 +62,7 @@ export class TasksComponent implements OnInit {
       isChecked: false,
       id: id,
       projectId: this.projectId
-    }
+    };
     this.taskService.SetTasksData(task, id);
     this.itemTitle = "";
     this.itemInfo = "";

@@ -17,9 +17,9 @@ export class HomeComponent implements OnInit {
   mode = 'indeterminate';
 
   ngOnInit() {
-    this.taskService.getUncheckedCount().then(res => {
-      (this.tasksCount = res), (this.countLoading = false);
-    });
+    // this.taskService.getUncheckedCount().then(res => {
+    //   (this.tasksCount = res), (this.countLoading = false);
+    // });
   }
 
   constructor(private taskService: TasksService) {}
