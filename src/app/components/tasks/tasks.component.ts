@@ -36,10 +36,10 @@ export class TasksComponent implements OnInit {
       .getProject(this.projectId)
       .subscribe(data => (this.currentProject = data));
 
-    this.projectsService.getUsersId(this.projectId).subscribe(data => {
-      this.projectsService.getUsers(data).map(item => {
-        item.subscribe(data => {
-          this.usersArray.push(...data);
+    this.projectsService.getUsersId(this.projectId).subscribe(usersInProject => {
+      this.projectsService.getUsers(usersInProject).map(item => {
+        item.subscribe(user => {
+          this.usersArray.push(...user);
         });
       });
     });

@@ -3,6 +3,9 @@
     height: 35px;
     border: 2px solid #fff;
     border-radius: 50%;
+}
+
+.avatar-in-group {
     overflow: hidden;
     position: relative;
     margin-right: -10px;
@@ -25,4 +28,10 @@
     align-items: center;
     font-size: 19px;
     color: #fff;
+}
+
+.user-sell {
+    color: #000;
+    display: flex;
+    align-items: center;
 }
