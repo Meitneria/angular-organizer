@@ -19,7 +19,6 @@ export class TaskItemComponent implements OnChanges {
   dateFromNow: string;
 
   ngOnChanges() {
-    console.log('change')
     this.time = moment(this.task.date).format('h:mm');
     this.dateFromNow = moment(this.task.date).fromNow();
   }
@@ -28,7 +27,7 @@ export class TaskItemComponent implements OnChanges {
     this.remove.emit($key);
   }
 
-  onCheck($key: string, isChecked: boolean) {
-    this.check.emit({ key: $key, checked: isChecked });
+  onCheck(task: Task) {
+    this.check.emit({ ...task, isChecked: !task.isChecked });
   }
 }

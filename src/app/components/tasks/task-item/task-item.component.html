@@ -1,7 +1,7 @@
 <div class="task">
     <i [ngClass] = "task.isChecked ? 'icon-success' : 'icon' "
        class="hover-cursor"
-       (click)="onCheck(task.$key, task.isChecked)"
+       (click)="onCheck(task)"
     ></i>
     <div class="label-text">
       <div class="item">
@@ -12,7 +12,7 @@
       </div>
     </div>
   <i class = "recycle hover-cursor"
-     (click)="onRemove(task.$key)"></i>
+     (click)="onRemove(task.id)"></i>
     <div class="label-date">
       <div class="date"> {{time}} </div>
       <div class="date small"> {{dateFromNow}} </div>

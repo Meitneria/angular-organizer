@@ -1,6 +1,5 @@
 import {
   AngularFirestore,
-  AngularFirestoreDocument
 } from "angularfire2/firestore";
 import { Injectable } from "@angular/core";
 import { AngularFireDatabase, AngularFireList } from "angularfire2/database";
@@ -21,16 +20,16 @@ export class TasksService {
   }
 
   CheckAccess(projectId: string) {
-    return this.afs.collection("user_project", ref =>ref
-    .where("userId", "==", this.userId)
-    .where("projectId", "==", projectId))
-    .valueChanges();
+    return this.afs.collection("user_project", ref => ref
+      .where("userId", "==", this.userId)
+      .where("projectId", "==", projectId))
+      .valueChanges();
   }
 
   getTasks(projectId: string) {
-    return this.afs.collection("tasks", ref =>ref
-    .where("projectId", "==", projectId))
-    .valueChanges();
+    return this.afs.collection("tasks", ref => ref
+      .where("projectId", "==", projectId))
+      .valueChanges();
   }
 
   SetTasksData(task: Task, id: string) {
@@ -38,28 +37,11 @@ export class TasksService {
     return projectRef.set(task);
   }
 
-  getToDoList() {
-    this.toDoList = this.firebasedb.list("titles/" + this.userId);
-    return this.toDoList;
+  CheckTitle(task: Task) {
+    this.afs.doc(`tasks/${task.id}`).set({ ...task });
   }
-
-  // public addTitle(title: string, info: string = null, date: string): void {
-  //   this.firebasedb.database.ref("titles").push().key;
-  //   this.firebasedb.database.ref("titles/" + this.userId).push({
-  //     title: title,
-  //     info: info,
-  //     date: date,
-  //     isChecked: false,
-  //     id: 
-  //     projectId:
-  //   });
-  // }
-
-  CheckTitle($key: string, flag: boolean) {
-    this.toDoList.update($key, { isChecked: !flag });
-  }
-  RemoveTitle($key: string) {
-    this.toDoList.remove($key);
+  RemoveTitle(id: string) {
+    this.afs.doc(`tasks/${id}`).delete();
   }
 
   getUncheckedCount() {
