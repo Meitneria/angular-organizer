@@ -34,4 +34,17 @@
     color: #000;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
+
+.color-black {
+    color: #111;
+}
+
+.recycle {
+    display: block;
+    background-image: url("../../../../assets/images/icons/recycling-bin.png");
+    min-width: 16px;
+    min-height: 16px;
+    margin: 15px 20px;
+  }

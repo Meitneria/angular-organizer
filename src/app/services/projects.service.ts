@@ -68,9 +68,20 @@ export class ProjectsService {
       Connection
     >(`user_project/${connectionId}`);
     connectionRef.set(
-      { projectId: projectId, userId: userId },
+      { projectId: projectId, userId: userId, connectionId },
       { merge: true }
     );
+  }
+
+  removeUserFromProject(userId: string, projectId: string) {
+    this.afs.collection<Connection>("user_project", ref =>
+        ref.where("projectId", "==", projectId)
+        .where("userId", "==", userId)
+      ).valueChanges().subscribe(item => {
+        if (item.length) {
+          this.afs.doc<Connection>(`user_project/${item[0].connectionId}`).delete();
+        }
+      });
   }
 
   async SetProjectData(project: Project, id: string) {
@@ -82,7 +93,7 @@ export class ProjectsService {
       Connection
     >(`user_project/${connectionId}`);
     connectionRef.set(
-      { projectId: id, userId: this.user.uid },
+      { projectId: id, userId: this.user.uid, connectionId },
       { merge: true }
     );
     return projectRef
