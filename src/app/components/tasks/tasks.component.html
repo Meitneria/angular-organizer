@@ -1,7 +1,34 @@
 <div class="project-header">
   <span class="project-title" *ngIf="currentProject">{{ currentProject.title }}</span>
-  <app-group-avatar [users]="usersArray"></app-group-avatar>
+  <div class ="users">
+    <app-group-avatar [users]="usersArray"></app-group-avatar>
+    <div class="share-button" [matMenuTriggerFor]="menu">Share +</div>
+  </div>
 </div>
+<mat-menu #menu="matMenu">
+  <span disabled mat-menu-item class="color-black">
+    <mat-form-field class="example-full-width">
+      <input
+        matInput
+        placeholder="Enter email"
+        [(ngModel)]="userEmail"
+        name="userEmail"
+        (ngModelChange)="onChange($event)"
+      >
+    </mat-form-field>
+  </span>
+  <span disabled mat-menu-item *ngFor="let user of searchableUsers" class="users">
+      <div class="user-container">
+        <img [src]='user.photoURL' class="avatar">
+        <span class="user-name">{{ user.displayName }}</span>
+      </div>
+      <button
+        class="add-button"
+        *ngIf="isUserInProject(user)"
+        (click)="addUserToProject(user.uid)"
+      >+</button>
+  </span>
+</mat-menu>
 <app-progress-bar [tasks]="taskArray"> </app-progress-bar>
 <section>
   <div class="row">
