@@ -56,6 +56,23 @@ export class ProjectsService {
     );
   }
 
+  getUsersByEmail(email) {
+    return this.afs
+        .collection<User>("users", ref => ref.where("email", "==", email))
+        .valueChanges();
+  }
+
+  addUserToProject(userId, projectId) {
+    const connectionId = uuid();
+    const connectionRef: AngularFirestoreDocument<any> = this.afs.doc<
+      Connection
+    >(`user_project/${connectionId}`);
+    connectionRef.set(
+      { projectId: projectId, userId: userId },
+      { merge: true }
+    );
+  }
+
   async SetProjectData(project: Project, id: string) {
     const projectRef: AngularFirestoreDocument<any> = this.afs.doc<Project>(
       `projects/${id}`
