@@ -1,7 +1,7 @@
 <div class="project-header">
   <span class="project-title" *ngIf="currentProject">{{ currentProject.title }}</span>
   <div class ="users">
-    <app-group-avatar [users]="usersArray"></app-group-avatar>
+    <app-group-avatar [users]="usersArray" (remove)="onRemoveUser($event)"></app-group-avatar>
     <div class="share-button" [matMenuTriggerFor]="menu">Share +</div>
   </div>
 </div>
