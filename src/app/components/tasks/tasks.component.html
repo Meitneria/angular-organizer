@@ -10,8 +10,8 @@
       class="task-container"
       *ngFor="let task of taskArray"
       [task]="task"
-      (check)="onCheck($event)"
       (remove)="onRemove($event)"
+      (edit)="onEdit($event)"
     >
     </app-task-item>
   </div>

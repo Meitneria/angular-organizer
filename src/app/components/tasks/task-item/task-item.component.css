@@ -41,8 +41,31 @@
   min-height: 16px;
   margin: 15px 20px;
 }
+.hover-cursor {
+  cursor: pointer;
+}
+.edit {
+  font-size: 18px;
+}
+.editing-form {
+  display: flex;
+  font-size: 14px;
+  padding: 0;
+  max-width: 300px;
+}
+.mat-form-field {
+  margin: 3px;
+}
 
 @media screen and (max-width: 550px) {
+  .editing-form {
+    flex-direction: column;
+    font-size: 10px;
+    max-width: 100px;
+  }
+  .edit {
+    font-size: 16px;
+  }
   .task {
     min-width: 300px;
   }

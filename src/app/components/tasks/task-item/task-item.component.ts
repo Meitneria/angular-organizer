@@ -1,11 +1,17 @@
-import { Component, EventEmitter, Input, Output, OnChanges } from '@angular/core';
-import { Task } from './../../../models/tasks';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  OnChanges
+} from "@angular/core";
+import { Task } from "./../../../models/tasks";
 import * as moment from "moment";
 
 @Component({
-  selector: 'app-task-item',
-  templateUrl: './task-item.component.html',
-  styleUrls: ['./task-item.component.css']
+  selector: "app-task-item",
+  templateUrl: "./task-item.component.html",
+  styleUrls: ["./task-item.component.css"]
 })
 export class TaskItemComponent implements OnChanges {
   @Input()
@@ -13,13 +19,14 @@ export class TaskItemComponent implements OnChanges {
   @Output()
   remove: EventEmitter<any> = new EventEmitter();
   @Output()
-  check: EventEmitter<any> = new EventEmitter();
+  edit: EventEmitter<any> = new EventEmitter();
 
   time: string;
   dateFromNow: string;
+  isEditingFormOpen: boolean = false;
 
   ngOnChanges() {
-    this.time = moment(this.task.date).format('h:mm');
+    this.time = moment(this.task.date).format("h:mm");
     this.dateFromNow = moment(this.task.date).fromNow();
   }
 
@@ -28,6 +35,15 @@ export class TaskItemComponent implements OnChanges {
   }
 
   onCheck(task: Task) {
-    this.check.emit({ ...task, isChecked: !task.isChecked });
+    this.edit.emit({ ...task, isChecked: !task.isChecked });
+  }
+
+  onEdit(task: Task) {
+    this.isEditingFormOpen = !this.isEditingFormOpen;
+    this.edit.emit({ ...task, title: task.title, info: task.info });
+  }
+
+  openForm() {
+    this.isEditingFormOpen = !this.isEditingFormOpen;
   }
 }

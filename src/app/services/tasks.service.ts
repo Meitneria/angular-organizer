@@ -30,7 +30,9 @@ export class TasksService {
 
   getTasks(projectId: string) {
     return this.afs
-      .collection<Task>("tasks", ref => ref.where("projectId", "==", projectId))
+      .collection<Task>("tasks", ref =>
+        ref.where("projectId", "==", projectId).orderBy("isChecked")
+      )
       .valueChanges();
   }
 
@@ -41,11 +43,11 @@ export class TasksService {
     return projectRef.set(task);
   }
 
-  CheckTitle(task: Task) {
-    this.afs.doc<Task>(`tasks/${task.id}`).set({ ...task });
-  }
   RemoveTitle(id: string) {
     this.afs.doc<Task>(`tasks/${id}`).delete();
+  }
+  EditTitle(task: Task) {
+    this.afs.doc<Task>(`tasks/${task.id}`).set({ ...task });
   }
 
   // getUncheckedCount() {

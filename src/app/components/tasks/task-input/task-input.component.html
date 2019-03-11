@@ -1,24 +1,27 @@
 <p>Create a new task</p>
-  <div class="create">
-    <div class="input-task">
-      <div class="position">
-        <input class="effect-2"
-               placeholder="Create a title"
-               [(ngModel)] = "itemTitle"
-        >
-        <span class="focus-border"></span>
-      </div>
-      <div class="position">
-        <input class="effect-2 small"
-               placeholder="Write something about it"
-               type="text"
-               [(ngModel)] = "itemInfo"
-        >
-        <span class="focus-border"></span>
-      </div>
+<div class="create">
+  <div class="input-task">
+    <div class="position">
+      <input
+        class="effect-2"
+        placeholder="Create a title"
+        [(ngModel)]="itemTitle"
+      />
+      <span class="focus-border"></span>
     </div>
-    <button class="confirm hover-cursor"
-            (click)="onAdd(itemTitle, itemInfo)"
-            [disabled]="!itemTitle"
-    ></button>
+    <div class="position">
+      <input
+        class="effect-2 small"
+        placeholder="Write something about it"
+        type="text"
+        [(ngModel)]="itemInfo"
+      />
+      <span class="focus-border"></span>
+    </div>
   </div>
+  <button
+    class="confirm hover-cursor"
+    (keyup.enter)="onAdd(itemTitle, itemInfo)"
+    [disabled]="!itemTitle"
+  ></button>
+</div>

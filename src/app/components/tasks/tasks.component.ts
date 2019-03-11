@@ -36,13 +36,15 @@ export class TasksComponent implements OnInit {
       .getProject(this.projectId)
       .subscribe(data => (this.currentProject = data));
 
-    this.projectsService.getUsersId(this.projectId).subscribe(usersInProject => {
-      this.projectsService.getUsers(usersInProject).map(item => {
-        item.subscribe(user => {
-          this.usersArray.push(...user);
+    this.projectsService
+      .getUsersId(this.projectId)
+      .subscribe(usersInProject => {
+        this.projectsService.getUsers(usersInProject).map(item => {
+          item.subscribe(user => {
+            this.usersArray.push(...user);
+          });
         });
       });
-    });
 
     this.taskService.CheckAccess(this.projectId).subscribe(data => {
       if (data.length) {
@@ -67,10 +69,11 @@ export class TasksComponent implements OnInit {
     this.itemTitle = "";
     this.itemInfo = "";
   }
-  onCheck(task: any) {
-    this.taskService.CheckTitle(task);
-  }
+  
   onRemove($key: string) {
     this.taskService.RemoveTitle($key);
+  }
+  onEdit(task: Task) {
+    this.taskService.EditTitle(task);
   }
 }

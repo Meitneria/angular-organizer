@@ -1,20 +1,54 @@
 <div class="task">
-    <i [ngClass] = "task.isChecked ? 'icon-success' : 'icon' "
-       class="hover-cursor"
-       (click)="onCheck(task)"
-    ></i>
-    <div class="label-text">
-      <div class="item">
-        {{task.title}}
-      </div>
-      <div class="item small">
-        {{task.info}}
-      </div>
+  <i
+    [ngClass]="task.isChecked ? 'icon-success' : 'icon'"
+    class="hover-cursor"
+    (click)="onCheck(task)"
+  ></i>
+  <div *ngIf="!isEditingFormOpen" class="label-text">
+    <div class="item">
+      {{ task.title }}
     </div>
-  <i class = "recycle hover-cursor"
-     (click)="onRemove(task.id)"></i>
-    <div class="label-date">
-      <div class="date"> {{time}} </div>
-      <div class="date small"> {{dateFromNow}} </div>
+    <div class="item small">
+      {{ task.info }}
     </div>
+  </div>
+  <form *ngIf="isEditingFormOpen" class="editing-form label-text">
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Title"
+        value="{{ task.title }}"
+        [(ngModel)]="task.title"
+        name="itemTitle"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Info"
+        value="{{ task.info }}"
+        [(ngModel)]="task.info"
+        name="itemInfo"
+      />
+    </mat-form-field>
+  </form>
+  <i class="recycle hover-cursor" (click)="onRemove(task.id)"></i>
+  <mat-icon
+    *ngIf="!isEditingFormOpen"
+    class="edit hover-cursor"
+    (click)="openForm()"
+  >
+    edit
+  </mat-icon>
+  <mat-icon
+    *ngIf="isEditingFormOpen"
+    class=" hover-cursor"
+    (click)="onEdit(task)"
+  >
+    done
+  </mat-icon>
+  <div class="label-date">
+    <div class="date">{{ time }}</div>
+    <div class="date small">{{ dateFromNow }}</div>
+  </div>
 </div>
