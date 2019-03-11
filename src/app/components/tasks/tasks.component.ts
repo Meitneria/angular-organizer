@@ -16,6 +16,7 @@ import { Task } from "src/app/models/tasks";
 })
 export class TasksComponent implements OnInit {
   usersArray: User[] = [];
+  searchableUsers: User[] = [];
   projectId: string;
   taskArray: Task[];
   currentProject: Project;
@@ -39,6 +40,7 @@ export class TasksComponent implements OnInit {
     this.projectsService
       .getUsersId(this.projectId)
       .subscribe(usersInProject => {
+        this.usersArray = [];
         this.projectsService.getUsers(usersInProject).map(item => {
           item.subscribe(user => {
             this.usersArray.push(...user);
@@ -55,6 +57,20 @@ export class TasksComponent implements OnInit {
     });
   }
 
+  onChange(event) {
+    this.projectsService.getUsersByEmail(event).subscribe(user => {
+      this.searchableUsers = user
+    });
+  }
+
+  isUserInProject(user) {
+    return !this.usersArray.find(item => item.uid === user.uid);
+  }
+
+  addUserToProject(userId) {
+    this.projectsService.addUserToProject(userId, this.projectId);
+  }
+
   onAdd(newTask: any) {
     const id = uuid();
     const task = {
@@ -69,7 +85,7 @@ export class TasksComponent implements OnInit {
     this.itemTitle = "";
     this.itemInfo = "";
   }
-  
+
   onRemove($key: string) {
     this.taskService.RemoveTitle($key);
   }
