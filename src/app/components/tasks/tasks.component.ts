@@ -71,6 +71,10 @@ export class TasksComponent implements OnInit {
     this.projectsService.addUserToProject(userId, this.projectId);
   }
 
+  onRemoveUser(userId: string) {
+    this.projectsService.removeUserFromProject(userId, this.projectId);
+  }
+
   onAdd(newTask: any) {
     if (!newTask.itemInfo) {
       newTask.itemInfo = "";

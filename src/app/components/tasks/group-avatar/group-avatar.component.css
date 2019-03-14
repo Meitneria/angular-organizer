@@ -36,13 +36,25 @@
   align-items: center;
 }
 
-@media screen and (max-width: 400px) {
-  .avatar-group {
-    padding: 0;
-  }
-  .avatar{
-    width: 26px;
-    height: 26px;
-    border: 1px solid #fff;
-  }
+.color-black {
+    color: #111;
 }
+
+.recycle {
+    display: block;
+    background-image: url("../../../../assets/images/icons/recycling-bin.png");
+    min-width: 16px;
+    min-height: 16px;
+    margin: 15px 20px;
+  }
+  
+  @media screen and (max-width: 400px) {
+    .avatar-group {
+      padding: 0;
+    }
+    .avatar{
+      width: 26px;
+      height: 26px;
+      border: 1px solid #fff;
+    }
+  }

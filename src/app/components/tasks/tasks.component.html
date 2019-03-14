@@ -4,7 +4,10 @@
   }}</span>
   <mat-icon class="settings" (click)="openDialog()">settings</mat-icon>
   <app-progress-bar class="spacer" [tasks]="taskArray"> </app-progress-bar>
-  <app-group-avatar [users]="usersArray"></app-group-avatar>
+  <app-group-avatar
+    [users]="usersArray"
+    (remove)="onRemoveUser($event)"
+  ></app-group-avatar>
   <div class="confirm" [matMenuTriggerFor]="menu">
     <mat-icon color="primary" class="add-icon">add</mat-icon>
   </div>

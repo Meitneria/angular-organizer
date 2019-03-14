@@ -10,14 +10,31 @@
     </div>
   </div>
   <mat-menu #menu="matMenu">
+    <span disabled mat-menu-item class="color-black">
+      <mat-form-field class="example-full-width">
+        <input
+          matInput
+          placeholder="Enter name or email"
+          [(ngModel)]="user"
+          name="user"
+          (ngModelChange)="onChange($event)"
+        >
+      </mat-form-field>
+    </span>
     <span
       mat-menu-item
       disabled
       class="user-sell"
-      *ngFor="let user of users"
+      *ngFor="let user of searchUsers"
     >
-      <img [src]='user.photoURL' class="avatar">
-      <span>{{ user.displayName }}</span>
+      <div class="user-sell">
+        <img [src]='user.photoURL' class="avatar">
+        <span>{{ user.displayName }}</span>
+      </div>
+      <i
+        class = "recycle"
+        (click)="onRemove(user.uid)">
+      </i>
     </span>
   </mat-menu>
 </div>
