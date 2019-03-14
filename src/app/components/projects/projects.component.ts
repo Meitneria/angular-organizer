@@ -36,6 +36,10 @@ export class ProjectsComponent implements OnInit {
     });
   }
 
+  onRemoveProject(projectId: string) {
+    this.projectsService.onRemoveProject(projectId);
+  }
+
   openProject(projectId: string) {
     this.router.navigate([`project/${projectId}`]);
   }

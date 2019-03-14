@@ -27,9 +27,9 @@ a {
   background-color: white;
   border-radius: 10px;
   width: 40%;
-  padding: 60px 30px;
   max-width: 200px;
   margin: 10px 10px;
+  padding-bottom: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -72,6 +72,21 @@ a {
 
 .project-container {
   height: 100%;
+}
+
+.card-content {
+  padding: 35px 0;
+}
+
+.menu-icon {
+  cursor: pointer;
+}
+
+.card-header {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding-top: 5px;
 }
 
 .project-avatar {
