@@ -1,12 +1,18 @@
-<section class="row">
+<mat-spinner class="spinner" *ngIf="isLoading"></mat-spinner>
+<section class="row" *ngIf="!isLoading">
     <div *ngFor="let project of projects" class="part project-container">
-        <div class="flex" (click)="openProject(project.id)">
-            <div class="project-avatar icon">{{ project.title[0] }}</div>
-          <span class="project-title">{{ project.title }}</span>
-        </div>
+      <div class="card-header">
+        <mat-icon class="menu-icon" (click)="onRemoveProject(project.id)">
+          more_vert
+        </mat-icon>
       </div>
+      <div class="flex card-content" (click)="openProject(project.id)">
+        <div class="project-avatar icon">{{ project.title[0] }}</div>
+        <span class="project-title">{{ project.title }}</span>
+      </div>
+    </div>
   <div class="part">
-    <div class="flex" (click)="openForm()">
+    <div class="flex card-content" (click)="openForm()">
       <img class="icon" src="./../../../assets/images/icons/plus.png" />
       <a *ngIf="!formIsOpen">Create new project</a>
     </div>

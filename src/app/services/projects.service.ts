@@ -56,13 +56,13 @@ export class ProjectsService {
     );
   }
 
-  getUsersByEmail(email) {
+  getUsersByEmail(email: string) {
     return this.afs
         .collection<User>("users", ref => ref.where("email", "==", email))
         .valueChanges();
   }
 
-  addUserToProject(userId, projectId) {
+  addUserToProject(userId: string, projectId: string) {
     const connectionId = uuid();
     const connectionRef: AngularFirestoreDocument<any> = this.afs.doc<
       Connection
@@ -82,6 +82,17 @@ export class ProjectsService {
           this.afs.doc<Connection>(`user_project/${item[0].connectionId}`).delete();
         }
       });
+  }
+
+  onRemoveProject(projectId: string) {
+    this.afs.collection<Connection>("user_project", ref =>
+      ref.where("projectId", "==", projectId)
+    ).valueChanges().subscribe(connectionArray => {
+      connectionArray.map(connection => {
+        this.afs.doc<Connection>(`user_project/${connection.connectionId}`).delete();
+      })
+    });
+    this.afs.doc<Connection>(`projects/${projectId}`).delete();
   }
 
   async SetProjectData(project: Project, id: string) {
