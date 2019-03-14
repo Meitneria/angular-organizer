@@ -1,37 +1,48 @@
 .avatar {
-    width: 35px;
-    height: 35px;
-    border: 2px solid #fff;
-    border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  border: 2px solid #fff;
+  border-radius: 50%;
 }
 
 .avatar-in-group {
-    overflow: hidden;
-    position: relative;
-    margin-right: -10px;
+  overflow: hidden;
+  position: relative;
+  margin-right: -10px;
 }
 
 .avatar:last-child {
-    margin-right: 0;
+  margin-right: 0;
 }
 
 .avatar-group {
-    display: flex;
-    justify-content: flex-end;
-    padding: 10px;
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
 }
 
 .avatar-plus {
-    background-color: #e0677d;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 19px;
-    color: #fff;
+  background-color: #e0677d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 19px;
+  color: #fff;
 }
 
 .user-sell {
-    color: #000;
-    display: flex;
-    align-items: center;
+  color: #000;
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (max-width: 400px) {
+  .avatar-group {
+    padding: 0;
+  }
+  .avatar{
+    width: 26px;
+    height: 26px;
+    border: 1px solid #fff;
+  }
 }

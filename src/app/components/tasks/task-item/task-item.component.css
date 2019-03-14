@@ -65,13 +65,14 @@
   }
   .edit {
     font-size: 16px;
+    margin: 7px 7px 0;
   }
   .task {
     min-width: 300px;
   }
   .label-text {
-    min-width: 150px;
-    max-width: 150px;
+    min-width: 130px;
+    max-width: 130px;
     font-size: 13px;
   }
   .label-date {

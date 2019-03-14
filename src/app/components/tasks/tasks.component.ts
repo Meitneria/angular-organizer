@@ -59,19 +59,22 @@ export class TasksComponent implements OnInit {
 
   onChange(event) {
     this.projectsService.getUsersByEmail(event).subscribe(user => {
-      this.searchableUsers = user
+      this.searchableUsers = user;
     });
   }
 
-  isUserInProject(user) {
+  isUserInProject(user: User) {
     return !this.usersArray.find(item => item.uid === user.uid);
   }
 
-  addUserToProject(userId) {
+  addUserToProject(userId: string) {
     this.projectsService.addUserToProject(userId, this.projectId);
   }
 
   onAdd(newTask: any) {
+    if (!newTask.itemInfo) {
+      newTask.itemInfo = "";
+    }
     const id = uuid();
     const task = {
       title: newTask.itemTitle,

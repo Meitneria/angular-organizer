@@ -3,50 +3,49 @@
   flex-direction: column;
   align-items: center;
 }
-
 .task-container {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.task-input{
+.task-input {
   width: 80%;
 }
-
-@media screen and (max-width: 400px) {
-  .task-input {
-    width: 100%;
-  }
-}
-
 .project-header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding: 0 25px;
+  border-bottom: 1px solid #f4f5f5;
 }
-
 .project-title {
   display: flex;
-  font-size: 20px;
+  font-size: 17px;
+  font-weight: bolder;
   text-transform: uppercase;
 }
 
-.users {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: #111;
+.settings {
+  font-size: 15px;
+  margin: 10px 8px 0px;
+  cursor: pointer;
 }
 
-.share-button {
-  background-color: #e0677d82;
-  height: 100%;
-  padding: 7px;
-  border-radius: 5px;
-  color: #fff;
+.spacer {
+  flex: 1 1;
+}
+
+.confirm {
+  background-color: #f8bbd0;
+  border-radius: 20px;
+  width: 32px;
+  height: 32px;
+  align-self: center;
   cursor: pointer;
+}
+
+.add-icon {
+  margin: 4px 0 0 4px;
 }
 
 .avatar {
@@ -78,4 +77,32 @@
 .user-container {
   display: flex;
   align-items: center;
+}
+
+@media screen and (max-width: 400px) {
+  .task-input {
+    width: 100%;
+  }
+  .project-header {
+    padding: 0 5px;
+  }
+  .project-title {
+    font-size: 10px;
+    text-align: center;
+  }
+  .settings {
+    font-size: 12px;
+    margin: 11px 0px 0px;
+    cursor: pointer;
+  }
+  .confirm {
+    width: 26px;
+    height: 26px;
+    margin-left: -5px;
+    z-index: 1;
+  }
+  .add-icon {
+    margin: 3px 0 0 3px;
+    font-size: 20px;
+  }
 }

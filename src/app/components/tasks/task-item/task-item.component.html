@@ -32,7 +32,6 @@
       />
     </mat-form-field>
   </form>
-  <i class="recycle hover-cursor" (click)="onRemove(task.id)"></i>
   <mat-icon
     *ngIf="!isEditingFormOpen"
     class="edit hover-cursor"
@@ -40,6 +39,7 @@
   >
     edit
   </mat-icon>
+  <i class="recycle hover-cursor" (click)="onRemove(task.id)"></i>
   <mat-icon
     *ngIf="isEditingFormOpen"
     class=" hover-cursor"

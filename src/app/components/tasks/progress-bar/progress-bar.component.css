@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   padding: 20px 0px;
-  border-bottom: 1px solid #f4f5f5;
 }
 
 .progress-bar-label {

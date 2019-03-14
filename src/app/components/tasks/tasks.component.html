@@ -1,8 +1,12 @@
 <div class="project-header">
-  <span class="project-title" *ngIf="currentProject">{{ currentProject.title }}</span>
-  <div class ="users">
-    <app-group-avatar [users]="usersArray"></app-group-avatar>
-    <div class="share-button" [matMenuTriggerFor]="menu">Share +</div>
+  <span *ngIf="currentProject" class="project-title">{{
+    currentProject.title
+  }}</span>
+  <mat-icon class="settings" (click)="openDialog()">settings</mat-icon>
+  <app-progress-bar class="spacer" [tasks]="taskArray"> </app-progress-bar>
+  <app-group-avatar [users]="usersArray"></app-group-avatar>
+  <div class="confirm" [matMenuTriggerFor]="menu">
+    <mat-icon color="primary" class="add-icon">add</mat-icon>
   </div>
 </div>
 <mat-menu #menu="matMenu">
@@ -14,22 +18,28 @@
         [(ngModel)]="userEmail"
         name="userEmail"
         (ngModelChange)="onChange($event)"
-      >
+      />
     </mat-form-field>
   </span>
-  <span disabled mat-menu-item *ngFor="let user of searchableUsers" class="users">
-      <div class="user-container">
-        <img [src]='user.photoURL' class="avatar">
-        <span class="user-name">{{ user.displayName }}</span>
-      </div>
-      <button
-        class="add-button"
-        *ngIf="isUserInProject(user)"
-        (click)="addUserToProject(user.uid)"
-      >+</button>
+  <span
+    disabled
+    mat-menu-item
+    *ngFor="let user of searchableUsers"
+    class="users"
+  >
+    <div class="user-container">
+      <img [src]="user.photoURL" class="avatar" />
+      <span class="user-name">{{ user.displayName }}</span>
+    </div>
+    <button
+      class="add-button"
+      *ngIf="isUserInProject(user)"
+      (click)="addUserToProject(user.uid)"
+    >
+      +
+    </button>
   </span>
 </mat-menu>
-<app-progress-bar [tasks]="taskArray"> </app-progress-bar>
 <section>
   <div class="row">
     <app-task-input class="task-input" (add)="onAdd($event)"> </app-task-input>
