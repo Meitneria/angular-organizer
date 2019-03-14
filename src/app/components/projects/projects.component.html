@@ -1,4 +1,5 @@
-<section class="row">
+<mat-spinner class="spinner" *ngIf="isLoading"></mat-spinner>
+<section class="row" *ngIf="!isLoading">
     <div *ngFor="let project of projects" class="part project-container">
       <div class="card-header">
         <mat-icon class="menu-icon" (click)="onRemoveProject(project.id)">

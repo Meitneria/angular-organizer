@@ -13,6 +13,7 @@ import { Project } from "./../../models/projects";
 })
 export class ProjectsComponent implements OnInit {
   projects: Project[];
+  isLoading: boolean = true;
   formIsOpen: boolean = false;
   titleFormControl = new FormControl("", [Validators.required]);
 
@@ -31,12 +32,16 @@ export class ProjectsComponent implements OnInit {
       data.map(item => {
         this.projectsService
           .getProject(item.projectId)
-          .subscribe(data => this.projects.push(data));
+          .subscribe(data => {
+            this.projects.push(data)
+          });
       });
+      this.isLoading = false;
     });
   }
 
   onRemoveProject(projectId: string) {
+    this.isLoading = true;
     this.projectsService.onRemoveProject(projectId);
   }
 

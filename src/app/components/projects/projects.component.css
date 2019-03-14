@@ -120,3 +120,7 @@ a {
     font-size: 12px;
   }
 }
+
+.spinner {
+  margin: 20% auto;
+}
